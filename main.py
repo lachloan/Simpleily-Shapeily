@@ -20,7 +20,6 @@ canvasMain = tkinter.Canvas(frameOne, width=1280, height=720)
 canvasMain.pack()
 
 
-
 background_image = tkinter.PhotoImage(file = 'D:\\School\\Year 11\\Software Design and Development\\SimpleilyShapeily\\Simpleily-Shapeily\\resources\\background.gif')
 canvasMain.create_image(0, 0, image=background_image, anchor="nw")
 
@@ -58,7 +57,7 @@ image_labelchildGram = ttk.Button(frameTwo, image=childGram, command=lambda: pri
 
 
 frameOne.pack()
-frameTwo.place(in_=frameOne, anchor="c", relx=.5, rely=.5)
-frameButtons.place(in_=frameOne, anchor="c", relx=.5, rely=.91)# http://stackoverflow.com/questions/4241036/how-do-i-center-a-frame-within-a-frame-in-tkinter
+frameTwo.place(in_=frameOne, anchor="c", relx=.5, rely=.5)# http://stackoverflow.com/questions/4241036/how-do-i-center-a-frame-within-a-frame-in-tkinter
+frameButtons.place(in_=frameOne, anchor="c", relx=.5, rely=.91)
 window.mainloop()
 
