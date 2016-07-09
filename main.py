@@ -1,30 +1,28 @@
 from tkinter import ttk
 import tkinter
 
+def findXCenter(canvas, item):
+    coords = canvas.bbox(item)
+    xOffset = (1280 / 2) - ((coords[2] - coords[0]) / 2)
+    return xOffset
 
-colourBackground = "#dedede"
 window = tkinter.Tk()
 window.title("Simplily Shapeily")
 window.geometry("1280x720")
-window.configure(background=colourBackground)
 ent = tkinter.Entry(window)
 
+canvas = tkinter.Canvas(window, width=1280, height=720)
+canvas.pack()
+
 background_image = tkinter.PhotoImage(file = 'D:\\School\\Year 11\\Software Design and Development\\SimpleilyShapeily\\Simpleily-Shapeily\\resources\\background.gif')
-background_label = tkinter.Label(window, image=background_image)
-background_label.place(x=0, y=0, relwidth=1, relheight=1)
+canvas.create_image(0, 0, image=background_image, anchor="nw")
 
-
-frameOne = tkinter.Frame(window, bg = colourBackground, pady=50)
-
-titleHero = ttk.Label(frameOne, background="white", text="Simplily Shapeily", font=("Verdana", 25))\
-    .grid(column = 1)
-titleSub = ttk.Label(frameOne, background="white", text="A fun, simple shape matching game!", font=("Verdana", 15))\
-    .grid(column = 1, row = 2)
-
-
-window.wm_attributes("-transparentcolor", "white")
+canvas_id = canvas.create_text(10, 10, anchor="nw")
+canvas.itemconfig(canvas_id, text="Simpily Shapeily", width=1280)
+canvas.itemconfig(canvas_id, font=("verdana", 25))
+xOffset = findXCenter(canvas, canvas_id)
+canvas.move(canvas_id, xOffset, 0)
 
 #Sets up the mainloop and frames. Buttons are within frameone and the screen is frametwo.
-frameOne.pack()
 window.mainloop()
 
