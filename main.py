@@ -2,6 +2,7 @@ from tkinter import ttk
 import tkinter
 
 import database
+import teacher
 
 def findXCenter(canvas, item):
     coords = canvas.bbox(item)
@@ -47,29 +48,25 @@ def main_menu():
     xOffset = findXCenter(canvasMain, canvasTextatt)
     canvasMain.move(canvasTextatt, xOffset, 75)
 
-    button = ttk.Button(frameButtons, text="Teacher Login").grid(row=1)
+    button = ttk.Button(frameButtons, text="Teacher Login", command=lambda:teacher.run()).grid(row=1)
 
-    childSam = tkinter.PhotoImage(
-        file='D:\\School\\Year 11\\Software Design and Development\\SimpleilyShapeily\\Simpleily-Shapeily\\resources\\childSam.gif')
-    childLamb = tkinter.PhotoImage(
-        file='D:\\School\\Year 11\\Software Design and Development\\SimpleilyShapeily\\Simpleily-Shapeily\\resources\\childLamb.gif')
-    childDamn = tkinter.PhotoImage(
-        file='D:\\School\\Year 11\\Software Design and Development\\SimpleilyShapeily\\Simpleily-Shapeily\\resources\\childDamn.gif')
-    childGram = tkinter.PhotoImage(
-        file='D:\\School\\Year 11\\Software Design and Development\\SimpleilyShapeily\\Simpleily-Shapeily\\resources\\childGram.gif')
+    children_dict = database.dbLoad()
+    children_pictures = {}
+    children_buttons = {}
+    children_count = 0
 
-    image_childSam = ttk.Button(frameTwo, image=childSam, command=lambda: print("sam")).grid(column=0, row=0)
-    image_labelchildLamb = ttk.Button(frameTwo, image=childLamb, command=lambda: print("Lamb")).grid(column=1, row=0)
-    image_labelchildDamn = ttk.Button(frameTwo, image=childDamn, command=lambda: print("Damn")).grid(column=2, row=0)
-    image_labelchildGram = ttk.Button(frameTwo, image=childGram, command=lambda: print("Gram")).grid(column=3, row=0)
+    for i in children_dict:
+        print(i)
+        children_pictures[i] = tkinter.PhotoImage(
+            file='D:\\School\\Year 11\\Software Design and Development\\SimpleilyShapeily\\Simpleily-Shapeily\\resources\\child' + i + '.gif')
+        children_buttons[i] = ttk.Button(frameTwo, image=children_pictures[i], command=lambda: print(i)).grid(
+            column=children_count, row=0)
+        children_count = children_count + 1
 
     frameOne.pack()
     frameTwo.place(in_=frameOne, anchor="c", relx=.5,
                    rely=.5)  # http://stackoverflow.com/questions/4241036/how-do-i-center-a-frame-within-a-frame-in-tkinter
     frameButtons.place(in_=frameOne, anchor="c", relx=.5, rely=.91)
     window.mainloop()
-
-children_list = database.dbLoad()
-print(children_list)
 
 main_menu()
