@@ -3,6 +3,7 @@ import tkinter
 
 import database
 import teacher
+import game
 
 def findXCenter(canvas, item):
     coords = canvas.bbox(item)
@@ -10,7 +11,7 @@ def findXCenter(canvas, item):
     return xOffset
 
 window = tkinter.Tk()
-window.title("Simplily Shapeily")
+window.title("Simpiley Shapeily")
 window.geometry("1280x720")
 window.resizable(0,0)
 ent = tkinter.Entry(window)
@@ -27,7 +28,7 @@ def main_menu():
     canvasMain.pack()
 
     background_image = tkinter.PhotoImage(
-        file='D:\\School\\Year 11\\Software Design and Development\\SimpleilyShapeily\\Simpleily-Shapeily\\resources\\background.gif')
+        file='J:\\School\\Year 11\\Software Design and Development\\Simpily-Shapeily\\resources\\background.gif')
     canvasMain.create_image(0, 0, image=background_image, anchor="nw")
 
     canvasText = canvasMain.create_text(10, 10, anchor="nw")
@@ -49,6 +50,7 @@ def main_menu():
     canvasMain.move(canvasTextatt, xOffset, 75)
 
     button = ttk.Button(frameButtons, text="Teacher Login", command=lambda:teacher.run()).grid(row=1)
+    button = ttk.Button(frameButtons, text="TestGamePanel", command=lambda:game.run()).grid(row=2)
 
     children_dict = database.dbLoad()
     children_pictures = {}
@@ -58,14 +60,13 @@ def main_menu():
     for i in children_dict:
         print(i)
         children_pictures[i] = tkinter.PhotoImage(
-            file='D:\\School\\Year 11\\Software Design and Development\\SimpleilyShapeily\\Simpleily-Shapeily\\resources\\child' + i + '.gif')
+            file='J:\\School\\Year 11\\Software Design and Development\\Simpily-Shapeily\\resources\\child' + i + '.gif')
         children_buttons[i] = ttk.Button(frameTwo, image=children_pictures[i], command=lambda: print(i)).grid(
             column=children_count, row=0)
         children_count = children_count + 1
 
     frameOne.pack()
-    frameTwo.place(in_=frameOne, anchor="c", relx=.5,
-                   rely=.5)  # http://stackoverflow.com/questions/4241036/how-do-i-center-a-frame-within-a-frame-in-tkinter
+    frameTwo.place(in_=frameOne, anchor="c", relx=.5, rely=.5)  # http://stackoverflow.com/questions/4241036/how-do-i-center-a-frame-within-a-frame-in-tkinter
     frameButtons.place(in_=frameOne, anchor="c", relx=.5, rely=.91)
     window.mainloop()
 

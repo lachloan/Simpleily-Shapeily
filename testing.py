@@ -3,7 +3,7 @@ import tkinter
 import database
 
 window = tkinter.Tk()
-window.title("Simplily Shapeily")
+window.title("Simpiley Shapeily")
 window.geometry("1280x720")
 window.resizable(0,0)
 ent = tkinter.Entry(window)
@@ -19,7 +19,7 @@ children_count = 0
 for i in children_dict:
     print(i)
     children_pictures[i] = tkinter.PhotoImage(
-        file='D:\\School\\Year 11\\Software Design and Development\\SimpleilyShapeily\\Simpleily-Shapeily\\resources\\child' + i + '.gif')
+        file='J:\\School\\Year 11\\Software Design and Development\\Simpily-Shapeily\\resources\\child' + i + '.gif')
     children_buttons[i] = ttk.Button(frameOne, image=children_pictures[i], command=lambda: print(i)).grid(column=children_count, row=0)
     children_count = children_count + 1
 
