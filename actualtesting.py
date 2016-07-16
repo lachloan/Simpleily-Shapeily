@@ -1,5 +1,5 @@
-import random
+count = 0
 
-number = random.randint(0,1)
-
-print(str(number))
+while count < 4:
+    print(str(count))
+    count = count + 1
