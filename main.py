@@ -28,7 +28,7 @@ def main_menu():
     canvasMain.pack()
 
     background_image = tkinter.PhotoImage(
-        file='J:\\School\\Year 11\\Software Design and Development\\Simpily-Shapeily\\resources\\background.gif')
+        file='resources\\background.gif')
     canvasMain.create_image(0, 0, image=background_image, anchor="nw")
 
     canvasText = canvasMain.create_text(10, 10, anchor="nw")
@@ -50,7 +50,6 @@ def main_menu():
     canvasMain.move(canvasTextatt, xOffset, 75)
 
     button = ttk.Button(frameButtons, text="Teacher Login", command=lambda:teacher.run()).grid(row=1)
-    button = ttk.Button(frameButtons, text="TestGamePanel", command=lambda:game.run()).grid(row=2)
 
     children_dict = database.dbLoad()
     children_pictures = {}
@@ -60,8 +59,8 @@ def main_menu():
     for i in children_dict:
         print(i)
         children_pictures[i] = tkinter.PhotoImage(
-            file='J:\\School\\Year 11\\Software Design and Development\\Simpily-Shapeily\\resources\\child' + i + '.gif')
-        children_buttons[i] = ttk.Button(frameTwo, image=children_pictures[i], command=lambda: print(i)).grid(
+            file='resources\\child' + i + '.gif')
+        children_buttons[i] = ttk.Button(frameTwo, image=children_pictures[i], command=lambda: game.run()).grid(
             column=children_count, row=0)
         children_count = children_count + 1
 
