@@ -11,7 +11,7 @@ def run():
     window.title("Simpiley Shapeily - Game Panel")
     window.geometry("1280x720")
     window.resizable(0,0)
-    window.configure(background=global_background)
+    window.configure(background="white")
     ent = tkinter.Entry(window)
 
     line_canvas = tkinter.Canvas(window, width=1280, height=720, bg=global_background)
@@ -76,7 +76,7 @@ def run():
         generateShapes(3)
 
     def generateNames():
-        global shapes_called
+        global shapes_called, name_canvas_square, name_canvas_circle, name_canvas_diamond, name_canvas_triangle
         name_called = []
         count = 0
         print("Generating Names")
@@ -89,32 +89,36 @@ def run():
 
             name_called.append(name)
             if name == "square":
-                name_canvas_square = tkinter.Canvas(frameNames, width=150, height=200, bg=global_background, bd=0,
+                name_canvas_square = tkinter.Canvas(frameNames, width=120, height=75, bg=global_background, bd=0,
                                                     highlightthickness=0, relief="ridge")
-                name_canvas_square.grid(column=count, row=1)
-                name_square = name_canvas_square.create_text(50,150, text="Square")
-                name_canvas_square.itemconfig(name_square, font=("MyriadPro-Regular", 20))
+                name_canvas_square.grid(column=count, row=1, padx=114)
+                name_square = name_canvas_square.create_text(60,37.5, text="Square")
+                name_canvas_square.itemconfig(name_square, font=("MyriadPro-Regular", 20,))
+                name_canvas_square.bind(clickHold)
 
             elif name == "circle":
-                name_canvas_circle = tkinter.Canvas(frameNames, width=150, height=200, bg=global_background, bd=0,
+                name_canvas_circle = tkinter.Canvas(frameNames, width=120, height=75, bg=global_background, bd=0,
                                                     highlightthickness=0, relief="ridge")
-                name_canvas_circle.grid(column=count, row=1)
-                name_circle = name_canvas_circle.create_text(50, 150, text="Circle")
+                name_canvas_circle.grid(column=count, row=1, padx=114)
+                name_circle = name_canvas_circle.create_text(60,37.5, text="Circle")
                 name_canvas_circle.itemconfig(name_circle, font=("MyriadPro-Regular", 20))
+                name_canvas_circle.bind(clickHold)
 
             elif name == "triangle":
-                name_canvas_triangle = tkinter.Canvas(frameNames, width=150, height=200, bg=global_background, bd=0,
+                name_canvas_triangle = tkinter.Canvas(frameNames, width=120, height=75, bg=global_background, bd=0,
                                                     highlightthickness=0, relief="ridge")
-                name_canvas_triangle.grid(column=count, row=1)
-                name_triangle = name_canvas_triangle.create_text(50, 150, text="Triangle")
+                name_canvas_triangle.grid(column=count, row=1, padx=114)
+                name_triangle = name_canvas_triangle.create_text(60,37.5, text="Triangle")
                 name_canvas_triangle.itemconfig(name_triangle, font=("MyriadPro-Regular", 20))
+                name_canvas_triangle.bind(clickHold)
 
             elif name == "diamond":
-                name_canvas_diamond = tkinter.Canvas(frameNames, width=150, height=200, bg=global_background, bd=0,
+                name_canvas_diamond = tkinter.Canvas(frameNames, width=120, height=75, bg=global_background, bd=0,
                                                     highlightthickness=0, relief="ridge")
-                name_canvas_diamond.grid(column=count, row=1)
-                name_diamond = name_canvas_diamond.create_text(50, 150, text="Diamond")
+                name_canvas_diamond.grid(column=count, row=1, padx=114)
+                name_diamond = name_canvas_diamond.create_text(60,37.5, text="Diamond")
                 name_canvas_diamond.itemconfig(name_diamond, font=("MyriadPro-Regular", 20))
+                name_canvas_diamond.bind(clickHold)
 
             print(name_called)
             print(count)
@@ -144,13 +148,11 @@ def run():
         line = line_canvas.create_line(start_x, start_y, end_x, end_y, fill="black")
         point_end = line_canvas.create_rectangle(end_x - 10, end_y - 10, end_x + 10, end_y + 10, fill="black")
 
-    window.bind("<ButtonPress-1>", clickHold)
-    window.bind("<ButtonRelease-1>", clickRelease)
-
     start_x = None
-
 
 
     frameShapes.place(relx=.5, rely=.65, anchor="center")
     frameNames.place(relx=.5, rely=.2, anchor="center")
     window.mainloop()
+
+run()
