@@ -4,8 +4,9 @@ import database
 import random
 
 def run():
-    global_background = "#EFF0D1"
-    shape_colour = "#77BA99"
+    global_background = "#C1CDCD"
+    shape_colour = "#808098"
+    text_colour = "#3A4161"
 
     window = tkinter.Tk()
     window.title("Simpiley Shapeily - Game Panel")
@@ -73,7 +74,27 @@ def run():
 
     def onClick(event):
         print("clicked")
-        generateShapes(3)
+
+    def onClickSquare(event):
+        global name_canvas_square
+        print("clicked square")
+        name_square_box = name_canvas_square.create_rectangle(0,0,119,74, fill="", outline=shape_colour)
+
+    def onClickCircle(event):
+        global name_canvas_circle
+        print("clicked circle")
+        name_circle_box = name_canvas_circle.create_rectangle(0,0,119,74, fill="", outline=shape_colour)
+
+    def onClickTriangle(event):
+        global name_canvas_triangle
+        print("clicked triangle")
+        name_triangle_box = name_canvas_triangle.create_rectangle(0,0,119,74, fill="", outline=shape_colour)
+
+    def onClickDiamond(event):
+        global name_canvas_diamond
+        print("clicked diamond")
+        name_diamond_box = name_canvas_diamond.create_rectangle(0,0,119,74, fill="", outline=shape_colour)
+
 
     def generateNames():
         global shapes_called, name_canvas_square, name_canvas_circle, name_canvas_diamond, name_canvas_triangle
@@ -93,32 +114,32 @@ def run():
                                                     highlightthickness=0, relief="ridge")
                 name_canvas_square.grid(column=count, row=1, padx=114)
                 name_square = name_canvas_square.create_text(60,37.5, text="Square")
-                name_canvas_square.itemconfig(name_square, font=("MyriadPro-Regular", 20,))
-                name_canvas_square.bind(clickHold)
+                name_canvas_square.itemconfig(name_square, font=("MyriadPro-Regular", 20,), fill=text_colour)
+                name_canvas_square.bind("<ButtonPress-1>", onClickSquare)
 
             elif name == "circle":
                 name_canvas_circle = tkinter.Canvas(frameNames, width=120, height=75, bg=global_background, bd=0,
                                                     highlightthickness=0, relief="ridge")
                 name_canvas_circle.grid(column=count, row=1, padx=114)
                 name_circle = name_canvas_circle.create_text(60,37.5, text="Circle")
-                name_canvas_circle.itemconfig(name_circle, font=("MyriadPro-Regular", 20))
-                name_canvas_circle.bind(clickHold)
+                name_canvas_circle.itemconfig(name_circle, font=("MyriadPro-Regular", 20), fill=text_colour)
+                name_canvas_circle.bind("<ButtonPress-1>", onClickCircle)
 
             elif name == "triangle":
                 name_canvas_triangle = tkinter.Canvas(frameNames, width=120, height=75, bg=global_background, bd=0,
                                                     highlightthickness=0, relief="ridge")
                 name_canvas_triangle.grid(column=count, row=1, padx=114)
                 name_triangle = name_canvas_triangle.create_text(60,37.5, text="Triangle")
-                name_canvas_triangle.itemconfig(name_triangle, font=("MyriadPro-Regular", 20))
-                name_canvas_triangle.bind(clickHold)
+                name_canvas_triangle.itemconfig(name_triangle, font=("MyriadPro-Regular", 20), fill=text_colour)
+                name_canvas_triangle.bind("<ButtonPress-1>", onClickTriangle)
 
             elif name == "diamond":
                 name_canvas_diamond = tkinter.Canvas(frameNames, width=120, height=75, bg=global_background, bd=0,
                                                     highlightthickness=0, relief="ridge")
                 name_canvas_diamond.grid(column=count, row=1, padx=114)
                 name_diamond = name_canvas_diamond.create_text(60,37.5, text="Diamond")
-                name_canvas_diamond.itemconfig(name_diamond, font=("MyriadPro-Regular", 20))
-                name_canvas_diamond.bind(clickHold)
+                name_canvas_diamond.itemconfig(name_diamond, font=("MyriadPro-Regular", 20), fill=text_colour)
+                name_canvas_diamond.bind("<ButtonPress-1>", onClickDiamond)
 
             print(name_called)
             print(count)
@@ -130,23 +151,6 @@ def run():
     start_x = None
     start_y = None
 
-    def clickHold(event):
-        global start_y, start_x
-
-        print("Running click")
-        start_x = event.x
-        start_y = event.y
-
-        point_start = line_canvas.create_rectangle(start_x - 10, start_y - 10, start_x + 10, start_y + 10, fill="black")
-
-    def clickRelease(event):
-        global start_y, start_x
-
-        end_x = event.x
-        end_y = event.y
-
-        line = line_canvas.create_line(start_x, start_y, end_x, end_y, fill="black")
-        point_end = line_canvas.create_rectangle(end_x - 10, end_y - 10, end_x + 10, end_y + 10, fill="black")
 
     start_x = None
 
