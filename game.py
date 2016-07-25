@@ -16,6 +16,7 @@ def run():
     window.configure(background="white")
     ent = tkinter.Entry(window)
 
+
     line_canvas = tkinter.Canvas(window, width=1280, height=720, bg=global_background)
     line_canvas.pack()
 
@@ -78,13 +79,11 @@ def run():
         print(shapes_called)
         generateNames()
 
-    def onClick(event):
-        print("clicked")
-
     def on_click_square_name(event):
         global name_canvas_square
         print("clicked square")
         name_square_box = name_canvas_square.create_rectangle(0,0,119,74, fill="", outline=border_colour)
+        name_square_box = name_canvas_square.create_rectangle(55, 65, 65, 75, fill=border_colour, outline=border_colour)
 
     def on_click_square(event):
         global shape_canvas_square
@@ -94,6 +93,8 @@ def run():
         global name_canvas_circle
         print("clicked circle")
         name_circle_box = name_canvas_circle.create_rectangle(0,0,119,74, fill="", outline=border_colour)
+        name_circle_box = name_canvas_circle.create_rectangle(55,65,65,75, fill=border_colour, outline=border_colour)
+
 
     def on_click_circle(event):
         global shape_canvas_circle
@@ -103,6 +104,7 @@ def run():
         global name_canvas_triangle
         print("clicked triangle")
         name_triangle_box = name_canvas_triangle.create_rectangle(0,0,119,74, fill="", outline=border_colour)
+        name_triangle_box = name_canvas_triangle.create_rectangle(55, 65, 65, 75, fill=border_colour, outline=border_colour)
 
     def on_click_triangle(event):
         global shape_canvas_triangle
@@ -112,6 +114,8 @@ def run():
         global name_canvas_diamond
         print("clicked diamond")
         name_diamond_box = name_canvas_diamond.create_rectangle(0,0,119,74, fill="", outline=border_colour)
+        name_diamond_box = name_canvas_diamond.create_rectangle(55, 65, 65, 75, fill=border_colour,
+                                                                  outline=border_colour)
 
     def on_click_diamond(event):
         global shape_canvas_diamond
@@ -182,6 +186,8 @@ def run():
 
     frameShapes.place(relx=.5, rely=.65, anchor="center")
     frameNames.place(relx=.5, rely=.2, anchor="center")
+
+
     window.mainloop()
 
 run()

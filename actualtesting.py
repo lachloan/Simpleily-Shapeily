@@ -33,7 +33,7 @@ def clickHold(event):
     start_x = event.x
     start_y = event.y
 
-    point_start = canvas.create_rectangle(start_x - 10, start_y - 10, start_x + 10, start_y + 10, fill="black")
+    point_start = canvas.create_rectangle(1, 100, 2, 90, fill="black")
 
 def clickRelease(event):
     global start_y, start_x
