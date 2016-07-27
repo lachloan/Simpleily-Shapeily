@@ -20,12 +20,7 @@ def run():
     shapes = []
     canvases = []
 
-    canvases.append(tkinter.Canvas(frameTesting, width=720, height=720))
-
-    canvases[0].pack()
-
-    shapes.append(canvases[0].create_rectangle(0,0,50,50, fill="black"))
-    shapes.append(canvases[0].create_oval(50,50,100,100, fill="black"))
+    canvas.create_polygon(150,75,113,10,38,10,0,75,37,140,112,140, fill="black")
 
 
 
