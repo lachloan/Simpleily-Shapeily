@@ -1,13 +1,15 @@
-import tkinter, random
+import tkinter, random, time
+from tkinter import ttk
 
 def run():
-    global clickedcurrentlyNames, clickedcurrentlyShapes, pairsShape, pairsCount, calledNames, calledShapes
+    global clickedcurrentlyNames, clickedcurrentlyShapes, pairsShape, pairsCount, calledNames, calledShapes, wincountNumber, wincount, losercount
 
     global_background = "#C1CDCD"
     shape_colour = "#808098"
     text_colour = "#3A4161"
     border_colour = "#808098"
 
+    wincount = 0
     calledShapes = []
     clickedcurrentlyShapes = 0
     clickedcurrentlyNames = 0
@@ -22,12 +24,45 @@ def run():
     window.configure(background="white")
     ent = tkinter.Entry(window)
 
+    # Canvas for connecting lines
     line_canvas = tkinter.Canvas(window, width=1280, height=720, bg=global_background)
     line_canvas.pack()
 
+    # Frames for shapes/names
     frameShapes = tkinter.Frame(window, bg=global_background)
     frameNames = tkinter.Frame(window, bg=global_background)
 
+    # Setting up the winner screen
+    wincountNumber = tkinter.StringVar()
+    frameWincount = tkinter.Frame(window, bg=global_background)
+    wincountLabelNumber = tkinter.Label(frameWincount, textvariable=wincountNumber, background=global_background, font=("MyriadPro-Regular", 15)).grid(column=2)
+    wincountNumber.set("Wins: 0")
+
+    frameWinner = tkinter.Frame(window, bg="white", height="5")
+    winnerCanvas = tkinter.Canvas(frameWinner, width=500, height=300, bg="white")
+    winnerLabel = tkinter.Label(frameWinner, text="Congratulations, you won!!", background="white", font=("MyriadPro-Regular", 15)).place(rely = 0.5, relx = .5, anchor="center")
+    winnerLabelsub = tkinter.Label(frameWinner, textvariable=wincountNumber, background="white", font=("MyriadPro-Regular", 15)).place(rely = 0.6, relx = .5, anchor="center")
+    winnerButton = ttk.Button(frameWinner, text="Continue", command=lambda:frameWinner.lower()).place(rely = 0.7, relx = .5, anchor="center")
+
+    winnerImage = tkinter.PhotoImage(
+        file='resources\\winnerBackground.gif')
+    winnerCanvas.create_image(0, 0, image=winnerImage, anchor="nw")
+    winnerCanvas.pack()
+
+    # Setting up loser screen
+    losercount = tkinter.StringVar()
+    losercount.set("Win count:")
+
+    frameLoser = tkinter.Frame(window, bg="white", height="5")
+    loserCanvas = tkinter.Canvas(frameLoser, width=500, height=300, bg="white")
+    loserLabel = tkinter.Label(frameLoser, text="Sorry, you lost!", background="white",font=("MyriadPro-Regular", 15)).place(rely=0.5, relx=.5, anchor="center")
+    loserLabelsub = tkinter.Label(frameLoser, textvariable=losercount, background="white",font=("MyriadPro-Regular", 15)).place(rely=0.6, relx=.5, anchor="center")
+    loserButton = ttk.Button(frameLoser, text="Continue", command=lambda: getReset()).place(rely=0.7,relx=.5, anchor="center")
+
+    loserImage = tkinter.PhotoImage(
+        file='resources\\winnerBackground.gif')
+    loserCanvas.create_image(0, 0, image=loserImage, anchor="nw")
+    loserCanvas.pack()
 
     def getChecked():
         global clickedcurrentlyShapes, clickedcurrentlyNames, pairsShape, pairsCount, calledNames, calledShapes
@@ -71,12 +106,19 @@ def run():
                 if key == value:
                     matches = matches + 1
 
+                else:
+                    print("fucked up")
+                    losercount.set("Win count: " + str(wincount))
+                    frameLoser.lift()
+                    break
+
             if matches == 3:
                 putWin()
 
     def getShapes(x):
         global calledShapes
         global shape_canvas_square, shape_canvas_triangle, shape_canvas_circle, shape_canvas_diamond, shape_canvas_pentagon, shape_canvas_hexagon, shape_canvas_trapezium
+
 
         shapes_list = ['square', 'triangle', 'circle', 'diamond', 'pentagon', 'hexagon', 'trapezium']
         count = 0
@@ -151,132 +193,6 @@ def run():
 
         getNames()
 
-    #
-    # # Clicking Section
-    #
-
-    # Square Clicks
-
-    def on_click_square_name(event):
-        global canvasSquare_name, clickedcurrentlyNames
-
-        if clickedcurrentlyNames == 0:
-            clickedcurrentlyNames = "square"
-            name_square_box = canvasSquare_name.create_rectangle(0, 0, 119, 74, fill="", outline=border_colour)
-            name_square_box = canvasSquare_name.create_rectangle(55, 65, 65, 75, fill=border_colour, outline=border_colour)
-    def on_click_square(event):
-        global shape_canvas_square, clickedcurrentlyShapes
-
-        if clickedcurrentlyShapes == 0:
-            clickedcurrentlyShapes = "square"
-            shape_canvas_square.create_rectangle(0,0,169,169, fill="", outline=border_colour)
-            getChecked()
-
-    # Circle Clicks
-    def on_click_circle_name(event):
-        global canvasCircle_name, clickedcurrentlyNames
-
-        if clickedcurrentlyNames == 0:
-            clickedcurrentlyNames = "circle"
-            name_circle_box = canvasCircle_name.create_rectangle(0, 0, 119, 74, fill="", outline=border_colour)
-            name_circle_box = canvasCircle_name.create_rectangle(55, 65, 65, 75, fill=border_colour, outline=border_colour)
-    def on_click_circle(event):
-        global shape_canvas_circle, clickedcurrentlyShapes
-
-        if clickedcurrentlyShapes == 0:
-            clickedcurrentlyShapes = "circle"
-            shape_canvas_circle.create_rectangle(0,0,169,169, fill="", outline=border_colour)
-            getChecked()
-
-    # Triangle Clicks
-    def on_click_triangle_name(event):
-        global canvasTriangle_name, clickedcurrentlyNames
-
-        if clickedcurrentlyNames == 0:
-            clickedcurrentlyNames = "triangle"
-            name_triangle_box = canvasTriangle_name.create_rectangle(0, 0, 119, 74, fill="", outline=border_colour)
-            name_triangle_box = canvasTriangle_name.create_rectangle(55, 65, 65, 75, fill=border_colour, outline=border_colour)
-    def on_click_triangle(event):
-        global shape_canvas_triangle, clickedcurrentlyShapes
-
-        if clickedcurrentlyShapes == 0:
-            clickedcurrentlyShapes = "triangle"
-            shape_canvas_triangle.create_rectangle(0,0,169,169, fill="", outline=border_colour)
-            getChecked()
-
-    # Diamond Clicks
-    def on_click_diamond_name(event):
-        global canvasDiamond_name, clickedcurrentlyNames
-
-        if clickedcurrentlyNames == 0:
-            clickedcurrentlyNames = "diamond"
-            name_diamond_box = canvasDiamond_name.create_rectangle(0, 0, 119, 74, fill="", outline=border_colour)
-            name_diamond_box = canvasDiamond_name.create_rectangle(55, 65, 65, 75, fill=border_colour,
-                                                                   outline=border_colour)
-    def on_click_diamond(event):
-        global shape_canvas_diamond, clickedcurrentlyShapes
-
-        if clickedcurrentlyShapes == 0:
-            clickedcurrentlyShapes = "diamond"
-            shape_canvas_diamond.create_rectangle(0,0,169,169, fill="", outline=border_colour)
-            getChecked()
-
-    # Pentagon Clicks
-    def on_click_pentagon_name(event):
-        global canvasPentagon_name, clickedcurrentlyNames
-
-        if clickedcurrentlyNames == 0:
-            clickedcurrentlyNames = "pentagon"
-            name_pentagon_box = canvasPentagon_name.create_rectangle(0, 0, 119, 74, fill="", outline=border_colour)
-            name_pentagon_box = canvasPentagon_name.create_rectangle(55, 65, 65, 75, fill=border_colour,
-                                                                     outline=border_colour)
-    def on_click_pentagon(event):
-        global shape_canvas_pentagon, clickedcurrentlyShapes
-
-        if clickedcurrentlyShapes == 0:
-            clickedcurrentlyShapes = "pentagon"
-            shape_canvas_pentagon.create_rectangle(0,0,169,169, fill="", outline=border_colour)
-            getChecked()
-
-    # Hexagon Clicks
-    def on_click_hexagon_name(event):
-        global canvasHexagon_name, clickedcurrentlyNames
-
-        if clickedcurrentlyNames == 0:
-            clickedcurrentlyNames = "hexagon"
-            name_hexagon_box = canvasHexagon_name.create_rectangle(0, 0, 119, 74, fill="", outline=border_colour)
-            name_hexagon_box = canvasHexagon_name.create_rectangle(55, 65, 65, 75, fill=border_colour,
-                                                                   outline=border_colour)
-    def on_click_hexagon(event):
-        global shape_canvas_hexagon, clickedcurrentlyShapes
-
-        if clickedcurrentlyShapes == 0:
-            clickedcurrentlyShapes = "hexagon"
-            shape_canvas_hexagon.create_rectangle(0,0,169,169, fill="", outline=border_colour)
-            getChecked()
-
-    # Trapezium Clicks
-    def on_click_trapezium_name(event):
-        global canvasTrapezium_name, clickedcurrentlyNames
-
-        if clickedcurrentlyNames == 0:
-            clickedcurrentlyNames = "trapezium"
-            name_trapezium_box = canvasTrapezium_name.create_rectangle(0, 0, 119, 74, fill="", outline=border_colour)
-            name_trapezium_box = canvasTrapezium_name.create_rectangle(55, 65, 65, 75, fill=border_colour,
-                                                                       outline=border_colour)
-    def on_click_trapezium(event):
-        global shape_canvas_trapezium, clickedcurrentlyShapes
-
-        if clickedcurrentlyShapes == 0:
-            clickedcurrentlyShapes = "trapezium"
-            shape_canvas_trapezium.create_rectangle(0,0,169,169, fill="", outline=border_colour)
-            getChecked()
-
-    #
-    # # End Clicking Section
-    #
-
-    # Generation of names for shapes
     def getNames():
         global calledShapes, calledNames
         global canvasSquare_name, canvasCircle_name, canvasDiamond_name, canvasTriangle_name, canvasPentagon_name, canvasHexagon_name, canvasTrapezium_name
@@ -347,28 +263,198 @@ def run():
                 name_trapezium = canvasTrapezium_name.create_text(60, 37.5, text="Trapezium")
                 canvasTrapezium_name.itemconfig(name_trapezium, font=("MyriadPro-Regular", 20), fill=text_colour)
                 canvasTrapezium_name.bind("<ButtonPress-1>", on_click_trapezium_name)
-                
+
+    #
+    # # Clicking Section
+    #
+
+    # Square Clicks
+    def on_click_square_name(event):
+        global canvasSquare_name, clickedcurrentlyNames
+        frameWinner.lower()
+
+        if clickedcurrentlyNames == 0:
+            clickedcurrentlyNames = "square"
+            name_square_box = canvasSquare_name.create_rectangle(0, 0, 119, 74, fill="", outline=border_colour)
+            name_square_box = canvasSquare_name.create_rectangle(55, 65, 65, 75, fill=border_colour, outline=border_colour)
+    def on_click_square(event):
+        global shape_canvas_square, clickedcurrentlyShapes
+        frameWinner.lower()
+
+        if clickedcurrentlyShapes == 0:
+            clickedcurrentlyShapes = "square"
+            shape_canvas_square.create_rectangle(0,0,169,169, fill="", outline=border_colour)
+            getChecked()
+
+    # Circle Clicks
+    def on_click_circle_name(event):
+        global canvasCircle_name, clickedcurrentlyNames
+        frameWinner.lower()
+
+        if clickedcurrentlyNames == 0:
+            clickedcurrentlyNames = "circle"
+            name_circle_box = canvasCircle_name.create_rectangle(0, 0, 119, 74, fill="", outline=border_colour)
+            name_circle_box = canvasCircle_name.create_rectangle(55, 65, 65, 75, fill=border_colour, outline=border_colour)
+    def on_click_circle(event):
+        global shape_canvas_circle, clickedcurrentlyShapes
+        frameWinner.lower()
+
+        if clickedcurrentlyNames == 0:
+            return
+
+        if clickedcurrentlyShapes == 0:
+            clickedcurrentlyShapes = "circle"
+            shape_canvas_circle.create_rectangle(0,0,169,169, fill="", outline=border_colour)
+            getChecked()
+
+    # Triangle Clicks
+    def on_click_triangle_name(event):
+        global canvasTriangle_name, clickedcurrentlyNames
+        frameWinner.lower()
+
+        if clickedcurrentlyNames == 0:
+            clickedcurrentlyNames = "triangle"
+            name_triangle_box = canvasTriangle_name.create_rectangle(0, 0, 119, 74, fill="", outline=border_colour)
+            name_triangle_box = canvasTriangle_name.create_rectangle(55, 65, 65, 75, fill=border_colour, outline=border_colour)
+    def on_click_triangle(event):
+        global shape_canvas_triangle, clickedcurrentlyShapes
+        frameWinner.lower()
+
+        if clickedcurrentlyNames == 0:
+            return
+
+        if clickedcurrentlyShapes == 0:
+            clickedcurrentlyShapes = "triangle"
+            shape_canvas_triangle.create_rectangle(0,0,169,169, fill="", outline=border_colour)
+            getChecked()
+
+    # Diamond Clicks
+    def on_click_diamond_name(event):
+        global canvasDiamond_name, clickedcurrentlyNames
+        frameWinner.lower()
+
+        if clickedcurrentlyNames == 0:
+            clickedcurrentlyNames = "diamond"
+            name_diamond_box = canvasDiamond_name.create_rectangle(0, 0, 119, 74, fill="", outline=border_colour)
+            name_diamond_box = canvasDiamond_name.create_rectangle(55, 65, 65, 75, fill=border_colour,
+                                                                   outline=border_colour)
+    def on_click_diamond(event):
+        global shape_canvas_diamond, clickedcurrentlyShapes
+        frameWinner.lower()
+
+        if clickedcurrentlyNames == 0:
+            return
+
+        if clickedcurrentlyShapes == 0:
+            clickedcurrentlyShapes = "diamond"
+            shape_canvas_diamond.create_rectangle(0,0,169,169, fill="", outline=border_colour)
+            getChecked()
+
+    # Pentagon Clicks
+    def on_click_pentagon_name(event):
+        global canvasPentagon_name, clickedcurrentlyNames
+        frameWinner.lower()
+
+        if clickedcurrentlyNames == 0:
+            clickedcurrentlyNames = "pentagon"
+            name_pentagon_box = canvasPentagon_name.create_rectangle(0, 0, 119, 74, fill="", outline=border_colour)
+            name_pentagon_box = canvasPentagon_name.create_rectangle(55, 65, 65, 75, fill=border_colour,
+                                                                     outline=border_colour)
+    def on_click_pentagon(event):
+        global shape_canvas_pentagon, clickedcurrentlyShapes
+        frameWinner.lower()
+
+        if clickedcurrentlyNames == 0:
+            return
+
+        if clickedcurrentlyShapes == 0:
+            clickedcurrentlyShapes = "pentagon"
+            shape_canvas_pentagon.create_rectangle(0,0,169,169, fill="", outline=border_colour)
+            getChecked()
+
+    # Hexagon Clicks
+    def on_click_hexagon_name(event):
+        global canvasHexagon_name, clickedcurrentlyNames
+        frameWinner.lower()
+
+        if clickedcurrentlyNames == 0:
+            clickedcurrentlyNames = "hexagon"
+            name_hexagon_box = canvasHexagon_name.create_rectangle(0, 0, 119, 74, fill="", outline=border_colour)
+            name_hexagon_box = canvasHexagon_name.create_rectangle(55, 65, 65, 75, fill=border_colour,
+                                                                   outline=border_colour)
+    def on_click_hexagon(event):
+        global shape_canvas_hexagon, clickedcurrentlyShapes
+        frameWinner.lower()
+
+        if clickedcurrentlyNames == 0:
+            return
+
+        if clickedcurrentlyShapes == 0:
+            clickedcurrentlyShapes = "hexagon"
+            shape_canvas_hexagon.create_rectangle(0,0,169,169, fill="", outline=border_colour)
+            getChecked()
+
+    # Trapezium Clicks
+    def on_click_trapezium_name(event):
+        global canvasTrapezium_name, clickedcurrentlyNames
+
+        if clickedcurrentlyNames == 0:
+            clickedcurrentlyNames = "trapezium"
+            name_trapezium_box = canvasTrapezium_name.create_rectangle(0, 0, 119, 74, fill="", outline=border_colour)
+            name_trapezium_box = canvasTrapezium_name.create_rectangle(55, 65, 65, 75, fill=border_colour,
+                                                                       outline=border_colour)
+    def on_click_trapezium(event):
+        global shape_canvas_trapezium, clickedcurrentlyShapes
+
+        if clickedcurrentlyNames == 0:
+            return
+
+        if clickedcurrentlyShapes == 0:
+            clickedcurrentlyShapes = "trapezium"
+            shape_canvas_trapezium.create_rectangle(0,0,169,169, fill="", outline=border_colour)
+            getChecked()
+
+    #
+    # # End Clicking Section
+    #
+
+
     def putWin():
-        global toplevel
-        toplevel = tkinter.Toplevel()
-        winner = tkinter.Label(toplevel, text="You won!")
-        continuebutton = tkinter.Button(toplevel, text="Continue", command=toplevel.destroy)
+        global wincountNumber, wincount
+
         getReset()
-        winner.pack(pady = 20, padx = 10)
-        continuebutton.pack(pady = 5)
+        wincount = wincount + 1
+        wincountNumber.set("Wins: " + str(wincount))
+
+        frameWinner.lift()
+
+
 
     def getReset():
-        global pairsCount, pairsShape
+        global pairsCount, pairsShape, wincountNumber, wincount
 
         pairsCount = 0
         pairsShape.clear()
         line_canvas.delete("all")
+        frameWinner.lower()
+        frameLoser.lower()
+
+        wincountNumber.set("Wins: 0")
+        wincount = 0
+
+
         getShapes(3)
 
     getShapes(3)
 
     frameShapes.place(relx=.5, rely=.65, anchor="center")
     frameNames.place(relx=.5, rely=.2, anchor="center")
+    frameWincount.place(relx=.05, rely=.05, anchor="center")
+    frameWinner.place(relx=.5, rely=.5, anchor="center")
+    frameLoser.place(relx=.5, rely=.5, anchor="center")
+    frameWinner.lower()
+    frameLoser.lower()
+
     window.mainloop()
 
 run()

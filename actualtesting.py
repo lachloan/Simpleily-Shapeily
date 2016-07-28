@@ -1,9 +1,6 @@
-from tkinter import ttk
 import tkinter
-import database
 
 def run():
-    global window, start_x, start_y, canvas
 
     window = tkinter.Tk()
     window.title("Simpiley Shapeily - Testing Panel")
@@ -11,24 +8,17 @@ def run():
     window.resizable(0,0)
     ent = tkinter.Entry(window)
 
-    frameTesting = tkinter.Frame(window)
+    wincountNumber = tkinter.StringVar()
 
-    canvas = tkinter.Canvas(frameTesting, width=720, height=720)
-
-    canvas.pack()
-
-    shapes = []
-    canvases = []
-
-    canvas.create_polygon(150,75,113,10,38,10,0,75,37,140,112,140, fill="black")
+    frameWincount = tkinter.Frame(window, bg="white")
+    wincountLabelText = tkinter.Label(frameWincount, text="Win Count:", background="white",
+                                      font=("MyriadPro-Regular", 15)).pack()
+    wincountLabelText = tkinter.Label(frameWincount, textvariable=wincountNumber,background="white").pack()
+    wincountNumber.set("0")
 
 
 
-
-
-    print(shapes)
-    print(canvases)
-    frameTesting.pack()
+    frameWincount.pack()
     window.mainloop()
 
 
