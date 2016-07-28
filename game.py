@@ -86,9 +86,9 @@ def run():
 
     def generateShapes(x):
         global calledShapes
-        global shape_canvas_square, shape_canvas_triangle, shape_canvas_circle, shape_canvas_diamond
+        global shape_canvas_square, shape_canvas_triangle, shape_canvas_circle, shape_canvas_diamond, shape_canvas_pentagon, shape_canvas_hexagon, shape_canvas_trapezium
 
-        shapes_list = ['square', 'triangle', 'circle', 'diamond']
+        shapes_list = ['square', 'triangle', 'circle', 'diamond', 'pentagon', 'hexagon', 'trapezium']
         count = 0
         calledShapes = []
         shape_padx = 100
@@ -130,6 +130,30 @@ def run():
                                                                 outline=global_background))  # Diamond
                 shape_canvas_diamond.grid(row=1, column=count, padx=shape_padx)
                 shape_canvas_diamond.bind("<ButtonPress-1>", on_click_diamond)
+
+            elif shape == "pentagon":
+                shape_canvas_pentagon = tkinter.Canvas(frameShapes, width=170, height=170, bg=global_background, bd=0,
+                                                      highlightthickness=0, relief="ridge")
+                shapes_shapes.append(shape_canvas_pentagon.create_polygon(85, 0, 4, 59, 35, 154, 135, 154, 166, 59, fill=shape_colour,
+                                                                outline=global_background))  # Pentagon
+                shape_canvas_pentagon.grid(row=1, column=count, padx=shape_padx)
+                shape_canvas_pentagon.bind("<ButtonPress-1>", on_click_pentagon)
+
+            elif shape == "hexagon":
+                shape_canvas_hexagon = tkinter.Canvas(frameShapes, width=170, height=170, bg=global_background, bd=0,
+                                                      highlightthickness=0, relief="ridge")
+                shapes_shapes.append(shape_canvas_hexagon.create_polygon(128,11,42,11,0,85,43,159,127,159,170,85, fill=shape_colour,
+                                                                outline=global_background))  # Hexagon
+                shape_canvas_hexagon.grid(row=1, column=count, padx=shape_padx)
+                shape_canvas_hexagon.bind("<ButtonPress-1>", on_click_hexagon)
+
+            elif shape == "trapezium":
+                shape_canvas_trapezium = tkinter.Canvas(frameShapes, width=170, height=170, bg=global_background, bd=0,
+                                                      highlightthickness=0, relief="ridge")
+                shapes_shapes.append(shape_canvas_trapezium.create_polygon(128,51,42,51,0,134.3,170,134.3,fill=shape_colour,
+                                                                outline=global_background))  # Trapezium
+                shape_canvas_trapezium.grid(row=1, column=count, padx=shape_padx)
+                shape_canvas_trapezium.bind("<ButtonPress-1>", on_click_trapezium)
 
             calledShapes.append(shape)
 
@@ -207,13 +231,64 @@ def run():
             shape_canvas_diamond.create_rectangle(0,0,169,169, fill="", outline=border_colour)
             check_shapes()
 
+    # Pentagon Clicks
+    def on_click_pentagon_name(event):
+        global name_canvas_pentagon, clickedcurrentlyNames
+
+        if clickedcurrentlyNames == 0:
+            clickedcurrentlyNames = "pentagon"
+            name_pentagon_box = name_canvas_pentagon.create_rectangle(0,0,119,74, fill="", outline=border_colour)
+            name_pentagon_box = name_canvas_pentagon.create_rectangle(55, 65, 65, 75, fill=border_colour,
+                                                                  outline=border_colour)
+    def on_click_pentagon(event):
+        global shape_canvas_pentagon, clickedcurrentlyShapes
+
+        if clickedcurrentlyShapes == 0:
+            clickedcurrentlyShapes = "pentagon"
+            shape_canvas_pentagon.create_rectangle(0,0,169,169, fill="", outline=border_colour)
+            check_shapes()
+
+    # Hexagon Clicks
+    def on_click_hexagon_name(event):
+        global name_canvas_hexagon, clickedcurrentlyNames
+
+        if clickedcurrentlyNames == 0:
+            clickedcurrentlyNames = "hexagon"
+            name_hexagon_box = name_canvas_hexagon.create_rectangle(0,0,119,74, fill="", outline=border_colour)
+            name_hexagon_box = name_canvas_hexagon.create_rectangle(55, 65, 65, 75, fill=border_colour,
+                                                                  outline=border_colour)
+    def on_click_hexagon(event):
+        global shape_canvas_hexagon, clickedcurrentlyShapes
+
+        if clickedcurrentlyShapes == 0:
+            clickedcurrentlyShapes = "hexagon"
+            shape_canvas_hexagon.create_rectangle(0,0,169,169, fill="", outline=border_colour)
+            check_shapes()
+
+    # Trapezium Clicks
+    def on_click_trapezium_name(event):
+        global name_canvas_trapezium, clickedcurrentlyNames
+
+        if clickedcurrentlyNames == 0:
+            clickedcurrentlyNames = "trapezium"
+            name_trapezium_box = name_canvas_trapezium.create_rectangle(0,0,119,74, fill="", outline=border_colour)
+            name_trapezium_box = name_canvas_trapezium.create_rectangle(55, 65, 65, 75, fill=border_colour,
+                                                                  outline=border_colour)
+    def on_click_trapezium(event):
+        global shape_canvas_trapezium, clickedcurrentlyShapes
+
+        if clickedcurrentlyShapes == 0:
+            clickedcurrentlyShapes = "trapezium"
+            shape_canvas_trapezium.create_rectangle(0,0,169,169, fill="", outline=border_colour)
+            check_shapes()
+
     #
     # # End Clicking Section
     #
 
     # Generation of names for shapes
     def generateNames():
-        global calledShapes, name_canvas_square, name_canvas_circle, name_canvas_diamond, name_canvas_triangle, calledNames
+        global calledShapes, name_canvas_square, name_canvas_circle, name_canvas_diamond, name_canvas_triangle, calledNames, name_canvas_pentagon, name_canvas_hexagon
         calledNames = []
         count = 0
         print("Generating Names")
@@ -259,6 +334,30 @@ def run():
                 name_canvas_diamond.itemconfig(name_diamond, font=("MyriadPro-Regular", 20), fill=text_colour)
                 name_canvas_diamond.bind("<ButtonPress-1>", on_click_diamond_name)
 
+            elif name == "pentagon":
+                name_canvas_pentagon = tkinter.Canvas(frameNames, width=120, height=75, bg=global_background, bd=0,
+                                                    highlightthickness=0, relief="ridge")
+                name_canvas_pentagon.grid(column=count, row=1, padx=padx)
+                name_pentagon = name_canvas_pentagon.create_text(60,37.5, text="Pentagon")
+                name_canvas_pentagon.itemconfig(name_pentagon, font=("MyriadPro-Regular", 20), fill=text_colour)
+                name_canvas_pentagon.bind("<ButtonPress-1>", on_click_pentagon_name)
+
+            elif name == "hexagon":
+                name_canvas_hexagon = tkinter.Canvas(frameNames, width=120, height=75, bg=global_background, bd=0,
+                                                    highlightthickness=0, relief="ridge")
+                name_canvas_hexagon.grid(column=count, row=1, padx=padx)
+                name_hexagon = name_canvas_hexagon.create_text(60,37.5, text="Hexagon")
+                name_canvas_hexagon.itemconfig(name_hexagon, font=("MyriadPro-Regular", 20), fill=text_colour)
+                name_canvas_hexagon.bind("<ButtonPress-1>", on_click_hexagon_name)
+
+            elif name == "trapezium":
+                name_canvas_trapezium = tkinter.Canvas(frameNames, width=120, height=75, bg=global_background, bd=0,
+                                                    highlightthickness=0, relief="ridge")
+                name_canvas_trapezium.grid(column=count, row=1, padx=padx)
+                name_trapezium = name_canvas_trapezium.create_text(60,37.5, text="Trapezium")
+                name_canvas_trapezium.itemconfig(name_trapezium, font=("MyriadPro-Regular", 20), fill=text_colour)
+                name_canvas_trapezium.bind("<ButtonPress-1>", on_click_trapezium_name)
+                
     def win():
         global toplevel
         toplevel = tkinter.Toplevel()
