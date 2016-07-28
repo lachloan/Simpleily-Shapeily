@@ -8,7 +8,7 @@ elif shape == "pentagon":
                 
 # Pentagon Clicks
     def on_click_pentagon_name(event):
-        global name_canvas_pentagon, clickedcurrentlyNames
+        global canvasPentagon_name, clickedcurrentlyNames
 
         if clickedcurrentlyNames == 0:
             clickedcurrentlyNames = "pentagon"
@@ -24,9 +24,9 @@ elif shape == "pentagon":
             check_shapes()
 
 elif name == "pentagon":
-                name_canvas_pentagon = tkinter.Canvas(frameNames, width=120, height=75, bg=global_background, bd=0,
-                                                    highlightthickness=0, relief="ridge")
-                name_canvas_pentagon.grid(column=count, row=1, padx=padx)
-                name_pentagon = name_canvas_pentagon.create_text(60,37.5, text="Pentagon")
-                name_canvas_pentagon.itemconfig(name_pentagon, font=("MyriadPro-Regular", 20), fill=text_colour)
-                name_canvas_pentagon.bind("<ButtonPress-1>", on_click_pentagon_name)
+                canvasPentagon_name = tkinter.Canvas(frameNames, width=120, height=75, bg=global_background, bd=0,
+                                                     highlightthickness=0, relief="ridge")
+                canvasPentagon_name.grid(column=count, row=1, padx=padx)
+                name_pentagon = canvasPentagon_name.create_text(60, 37.5, text="Pentagon")
+                canvasPentagon_name.itemconfig(name_pentagon, font=("MyriadPro-Regular", 20), fill=text_colour)
+                canvasPentagon_name.bind("<ButtonPress-1>", on_click_pentagon_name)

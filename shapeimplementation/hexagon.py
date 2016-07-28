@@ -8,7 +8,7 @@ elif shape == "hexagon":
                 
 # Hexagon Clicks
     def on_click_hexagon_name(event):
-        global name_canvas_hexagon, clickedcurrentlyNames
+        global canvasHexagon_name, clickedcurrentlyNames
 
         if clickedcurrentlyNames == 0:
             clickedcurrentlyNames = "hexagon"
@@ -24,9 +24,9 @@ elif shape == "hexagon":
             check_shapes()
 
 elif name == "hexagon":
-                name_canvas_hexagon = tkinter.Canvas(frameNames, width=120, height=75, bg=global_background, bd=0,
+                canvasHexagon_name = tkinter.Canvas(frameNames, width=120, height=75, bg=global_background, bd=0,
                                                     highlightthickness=0, relief="ridge")
-                name_canvas_hexagon.grid(column=count, row=1, padx=padx)
-                name_hexagon = name_canvas_hexagon.create_text(60,37.5, text="Hexagon")
-                name_canvas_hexagon.itemconfig(name_hexagon, font=("MyriadPro-Regular", 20), fill=text_colour)
-                name_canvas_hexagon.bind("<ButtonPress-1>", on_click_hexagon_name)
+                canvasHexagon_name.grid(column=count, row=1, padx=padx)
+                name_hexagon = canvasHexagon_name.create_text(60, 37.5, text="Hexagon")
+                canvasHexagon_name.itemconfig(name_hexagon, font=("MyriadPro-Regular", 20), fill=text_colour)
+                canvasHexagon_name.bind("<ButtonPress-1>", on_click_hexagon_name)

@@ -8,7 +8,7 @@ elif shape == "diamond":
                 
 # Diamond Clicks
     def on_click_diamond_name(event):
-        global name_canvas_diamond, clickedcurrentlyNames
+        global canvasDiamond_name, clickedcurrentlyNames
 
         if clickedcurrentlyNames == 0:
             clickedcurrentlyNames = "diamond"
@@ -24,9 +24,9 @@ elif shape == "diamond":
             check_shapes()
 
 elif name == "diamond":
-                name_canvas_diamond = tkinter.Canvas(frameNames, width=120, height=75, bg=global_background, bd=0,
+                canvasDiamond_name = tkinter.Canvas(frameNames, width=120, height=75, bg=global_background, bd=0,
                                                     highlightthickness=0, relief="ridge")
-                name_canvas_diamond.grid(column=count, row=1, padx=padx)
-                name_diamond = name_canvas_diamond.create_text(60,37.5, text="Diamond")
-                name_canvas_diamond.itemconfig(name_diamond, font=("MyriadPro-Regular", 20), fill=text_colour)
-                name_canvas_diamond.bind("<ButtonPress-1>", on_click_diamond_name)
+                canvasDiamond_name.grid(column=count, row=1, padx=padx)
+                name_diamond = canvasDiamond_name.create_text(60, 37.5, text="Diamond")
+                canvasDiamond_name.itemconfig(name_diamond, font=("MyriadPro-Regular", 20), fill=text_colour)
+                canvasDiamond_name.bind("<ButtonPress-1>", on_click_diamond_name)

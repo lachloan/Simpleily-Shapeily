@@ -8,7 +8,7 @@ elif shape == "trapezium":
                 
 # Trapezium Clicks
     def on_click_trapezium_name(event):
-        global name_canvas_trapezium, clickedcurrentlyNames
+        global canvasTrapezium_name, clickedcurrentlyNames
 
         if clickedcurrentlyNames == 0:
             clickedcurrentlyNames = "trapezium"
@@ -24,9 +24,9 @@ elif shape == "trapezium":
             check_shapes()
 
 elif name == "trapezium":
-                name_canvas_trapezium = tkinter.Canvas(frameNames, width=120, height=75, bg=global_background, bd=0,
-                                                    highlightthickness=0, relief="ridge")
-                name_canvas_trapezium.grid(column=count, row=1, padx=padx)
-                name_trapezium = name_canvas_trapezium.create_text(60,37.5, text="Trapezium")
-                name_canvas_trapezium.itemconfig(name_trapezium, font=("MyriadPro-Regular", 20), fill=text_colour)
-                name_canvas_trapezium.bind("<ButtonPress-1>", on_click_trapezium_name)
+                canvasTrapezium_name = tkinter.Canvas(frameNames, width=120, height=75, bg=global_background, bd=0,
+                                                      highlightthickness=0, relief="ridge")
+                canvasTrapezium_name.grid(column=count, row=1, padx=padx)
+                name_trapezium = canvasTrapezium_name.create_text(60, 37.5, text="Trapezium")
+                canvasTrapezium_name.itemconfig(name_trapezium, font=("MyriadPro-Regular", 20), fill=text_colour)
+                canvasTrapezium_name.bind("<ButtonPress-1>", on_click_trapezium_name)

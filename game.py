@@ -1,16 +1,19 @@
-from tkinter import ttk
-import tkinter
-import database
-import random
-import time
+import tkinter, random
 
 def run():
-    global clickedcurrentlyNames, clickedcurrentlyShapes, shape_pairs, count_pairs, shapeNameCoords, calledNames, calledShapes, count_pairs
+    global clickedcurrentlyNames, clickedcurrentlyShapes, pairsShape, pairsCount, calledNames, calledShapes
 
     global_background = "#C1CDCD"
     shape_colour = "#808098"
     text_colour = "#3A4161"
     border_colour = "#808098"
+
+    calledShapes = []
+    clickedcurrentlyShapes = 0
+    clickedcurrentlyNames = 0
+    pairsShape = {}
+    pairsCount = 0
+    calledNames = None
 
     window = tkinter.Tk()
     window.title("Simpiley Shapeily - Game Panel")
@@ -19,31 +22,19 @@ def run():
     window.configure(background="white")
     ent = tkinter.Entry(window)
 
-
     line_canvas = tkinter.Canvas(window, width=1280, height=720, bg=global_background)
     line_canvas.pack()
 
     frameShapes = tkinter.Frame(window, bg=global_background)
     frameNames = tkinter.Frame(window, bg=global_background)
 
-    calledShapes = []
 
-    clickedcurrentlyShapes = 0
-    clickedcurrentlyNames = 0
-
-    shape_pairs = {}
-    count_pairs = 0
-    shapeNameCoords = {}
-
-    calledNames = None
-
-    def check_shapes():
-        global clickedcurrentlyShapes, clickedcurrentlyNames, shape_pairs, count_pairs, calledNames, calledShapes
+    def getChecked():
+        global clickedcurrentlyShapes, clickedcurrentlyNames, pairsShape, pairsCount, calledNames, calledShapes
 
 
         if clickedcurrentlyShapes and clickedcurrentlyNames is not 0:
-            shape_pairs[clickedcurrentlyNames] = clickedcurrentlyShapes
-            print(shape_pairs)
+            pairsShape[clickedcurrentlyNames] = clickedcurrentlyShapes
 
             Coord_X = [270, 640, 1010]
             Coord_YS = 383
@@ -72,19 +63,18 @@ def run():
 
             clickedcurrentlyShapes = 0
             clickedcurrentlyNames = 0
-            count_pairs = count_pairs + 1
+            pairsCount = pairsCount + 1
 
-        if count_pairs == 3:
+        if pairsCount == 3:
             matches = 0
-            for key, value in shape_pairs.items():
+            for key, value in pairsShape.items():
                 if key == value:
                     matches = matches + 1
 
             if matches == 3:
-                print("All Correct")
-                win()
+                putWin()
 
-    def generateShapes(x):
+    def getShapes(x):
         global calledShapes
         global shape_canvas_square, shape_canvas_triangle, shape_canvas_circle, shape_canvas_diamond, shape_canvas_pentagon, shape_canvas_hexagon, shape_canvas_trapezium
 
@@ -159,7 +149,7 @@ def run():
 
             count += 1
 
-        generateNames()
+        getNames()
 
     #
     # # Clicking Section
@@ -168,130 +158,130 @@ def run():
     # Square Clicks
 
     def on_click_square_name(event):
-        global name_canvas_square, clickedcurrentlyNames
+        global canvasSquare_name, clickedcurrentlyNames
 
         if clickedcurrentlyNames == 0:
             clickedcurrentlyNames = "square"
-            name_square_box = name_canvas_square.create_rectangle(0,0,119,74, fill="", outline=border_colour)
-            name_square_box = name_canvas_square.create_rectangle(55, 65, 65, 75, fill=border_colour, outline=border_colour)
+            name_square_box = canvasSquare_name.create_rectangle(0, 0, 119, 74, fill="", outline=border_colour)
+            name_square_box = canvasSquare_name.create_rectangle(55, 65, 65, 75, fill=border_colour, outline=border_colour)
     def on_click_square(event):
         global shape_canvas_square, clickedcurrentlyShapes
 
         if clickedcurrentlyShapes == 0:
             clickedcurrentlyShapes = "square"
             shape_canvas_square.create_rectangle(0,0,169,169, fill="", outline=border_colour)
-            check_shapes()
+            getChecked()
 
     # Circle Clicks
     def on_click_circle_name(event):
-        global name_canvas_circle, clickedcurrentlyNames
+        global canvasCircle_name, clickedcurrentlyNames
 
         if clickedcurrentlyNames == 0:
             clickedcurrentlyNames = "circle"
-            name_circle_box = name_canvas_circle.create_rectangle(0,0,119,74, fill="", outline=border_colour)
-            name_circle_box = name_canvas_circle.create_rectangle(55,65,65,75, fill=border_colour, outline=border_colour)
+            name_circle_box = canvasCircle_name.create_rectangle(0, 0, 119, 74, fill="", outline=border_colour)
+            name_circle_box = canvasCircle_name.create_rectangle(55, 65, 65, 75, fill=border_colour, outline=border_colour)
     def on_click_circle(event):
         global shape_canvas_circle, clickedcurrentlyShapes
 
         if clickedcurrentlyShapes == 0:
             clickedcurrentlyShapes = "circle"
             shape_canvas_circle.create_rectangle(0,0,169,169, fill="", outline=border_colour)
-            check_shapes()
+            getChecked()
 
     # Triangle Clicks
     def on_click_triangle_name(event):
-        global name_canvas_triangle, clickedcurrentlyNames
+        global canvasTriangle_name, clickedcurrentlyNames
 
         if clickedcurrentlyNames == 0:
             clickedcurrentlyNames = "triangle"
-            name_triangle_box = name_canvas_triangle.create_rectangle(0,0,119,74, fill="", outline=border_colour)
-            name_triangle_box = name_canvas_triangle.create_rectangle(55, 65, 65, 75, fill=border_colour, outline=border_colour)
+            name_triangle_box = canvasTriangle_name.create_rectangle(0, 0, 119, 74, fill="", outline=border_colour)
+            name_triangle_box = canvasTriangle_name.create_rectangle(55, 65, 65, 75, fill=border_colour, outline=border_colour)
     def on_click_triangle(event):
         global shape_canvas_triangle, clickedcurrentlyShapes
 
         if clickedcurrentlyShapes == 0:
             clickedcurrentlyShapes = "triangle"
             shape_canvas_triangle.create_rectangle(0,0,169,169, fill="", outline=border_colour)
-            check_shapes()
+            getChecked()
 
     # Diamond Clicks
     def on_click_diamond_name(event):
-        global name_canvas_diamond, clickedcurrentlyNames
+        global canvasDiamond_name, clickedcurrentlyNames
 
         if clickedcurrentlyNames == 0:
             clickedcurrentlyNames = "diamond"
-            name_diamond_box = name_canvas_diamond.create_rectangle(0,0,119,74, fill="", outline=border_colour)
-            name_diamond_box = name_canvas_diamond.create_rectangle(55, 65, 65, 75, fill=border_colour,
-                                                                  outline=border_colour)
+            name_diamond_box = canvasDiamond_name.create_rectangle(0, 0, 119, 74, fill="", outline=border_colour)
+            name_diamond_box = canvasDiamond_name.create_rectangle(55, 65, 65, 75, fill=border_colour,
+                                                                   outline=border_colour)
     def on_click_diamond(event):
         global shape_canvas_diamond, clickedcurrentlyShapes
 
         if clickedcurrentlyShapes == 0:
             clickedcurrentlyShapes = "diamond"
             shape_canvas_diamond.create_rectangle(0,0,169,169, fill="", outline=border_colour)
-            check_shapes()
+            getChecked()
 
     # Pentagon Clicks
     def on_click_pentagon_name(event):
-        global name_canvas_pentagon, clickedcurrentlyNames
+        global canvasPentagon_name, clickedcurrentlyNames
 
         if clickedcurrentlyNames == 0:
             clickedcurrentlyNames = "pentagon"
-            name_pentagon_box = name_canvas_pentagon.create_rectangle(0,0,119,74, fill="", outline=border_colour)
-            name_pentagon_box = name_canvas_pentagon.create_rectangle(55, 65, 65, 75, fill=border_colour,
-                                                                  outline=border_colour)
+            name_pentagon_box = canvasPentagon_name.create_rectangle(0, 0, 119, 74, fill="", outline=border_colour)
+            name_pentagon_box = canvasPentagon_name.create_rectangle(55, 65, 65, 75, fill=border_colour,
+                                                                     outline=border_colour)
     def on_click_pentagon(event):
         global shape_canvas_pentagon, clickedcurrentlyShapes
 
         if clickedcurrentlyShapes == 0:
             clickedcurrentlyShapes = "pentagon"
             shape_canvas_pentagon.create_rectangle(0,0,169,169, fill="", outline=border_colour)
-            check_shapes()
+            getChecked()
 
     # Hexagon Clicks
     def on_click_hexagon_name(event):
-        global name_canvas_hexagon, clickedcurrentlyNames
+        global canvasHexagon_name, clickedcurrentlyNames
 
         if clickedcurrentlyNames == 0:
             clickedcurrentlyNames = "hexagon"
-            name_hexagon_box = name_canvas_hexagon.create_rectangle(0,0,119,74, fill="", outline=border_colour)
-            name_hexagon_box = name_canvas_hexagon.create_rectangle(55, 65, 65, 75, fill=border_colour,
-                                                                  outline=border_colour)
+            name_hexagon_box = canvasHexagon_name.create_rectangle(0, 0, 119, 74, fill="", outline=border_colour)
+            name_hexagon_box = canvasHexagon_name.create_rectangle(55, 65, 65, 75, fill=border_colour,
+                                                                   outline=border_colour)
     def on_click_hexagon(event):
         global shape_canvas_hexagon, clickedcurrentlyShapes
 
         if clickedcurrentlyShapes == 0:
             clickedcurrentlyShapes = "hexagon"
             shape_canvas_hexagon.create_rectangle(0,0,169,169, fill="", outline=border_colour)
-            check_shapes()
+            getChecked()
 
     # Trapezium Clicks
     def on_click_trapezium_name(event):
-        global name_canvas_trapezium, clickedcurrentlyNames
+        global canvasTrapezium_name, clickedcurrentlyNames
 
         if clickedcurrentlyNames == 0:
             clickedcurrentlyNames = "trapezium"
-            name_trapezium_box = name_canvas_trapezium.create_rectangle(0,0,119,74, fill="", outline=border_colour)
-            name_trapezium_box = name_canvas_trapezium.create_rectangle(55, 65, 65, 75, fill=border_colour,
-                                                                  outline=border_colour)
+            name_trapezium_box = canvasTrapezium_name.create_rectangle(0, 0, 119, 74, fill="", outline=border_colour)
+            name_trapezium_box = canvasTrapezium_name.create_rectangle(55, 65, 65, 75, fill=border_colour,
+                                                                       outline=border_colour)
     def on_click_trapezium(event):
         global shape_canvas_trapezium, clickedcurrentlyShapes
 
         if clickedcurrentlyShapes == 0:
             clickedcurrentlyShapes = "trapezium"
             shape_canvas_trapezium.create_rectangle(0,0,169,169, fill="", outline=border_colour)
-            check_shapes()
+            getChecked()
 
     #
     # # End Clicking Section
     #
 
     # Generation of names for shapes
-    def generateNames():
-        global calledShapes, name_canvas_square, name_canvas_circle, name_canvas_diamond, name_canvas_triangle, calledNames, name_canvas_pentagon, name_canvas_hexagon
+    def getNames():
+        global calledShapes, calledNames
+        global canvasSquare_name, canvasCircle_name, canvasDiamond_name, canvasTriangle_name, canvasPentagon_name, canvasHexagon_name, canvasTrapezium_name
         calledNames = []
         count = 0
-        print("Generating Names")
         padx = 125
 
         for i in calledShapes:
@@ -302,85 +292,83 @@ def run():
 
             calledNames.append(name)
             if name == "square":
-                name_canvas_square = tkinter.Canvas(frameNames, width=120, height=75, bg=global_background, bd=0,
-                                                    highlightthickness=0, relief="ridge")
-                name_canvas_square.grid(column=count, row=1, padx=padx)
-                name_square = name_canvas_square.create_text(60,37.5, text="Square")
-                name_canvas_square.itemconfig(name_square, font=("MyriadPro-Regular", 20,), fill=text_colour)
-                name_canvas_square.bind("<ButtonPress-1>", on_click_square_name)
+                canvasSquare_name = tkinter.Canvas(frameNames, width=120, height=75, bg=global_background, bd=0,
+                                                   highlightthickness=0, relief="ridge")
+                canvasSquare_name.grid(column=count, row=1, padx=padx)
+                name_square = canvasSquare_name.create_text(60, 37.5, text="Square")
+                canvasSquare_name.itemconfig(name_square, font=("MyriadPro-Regular", 20,), fill=text_colour)
+                canvasSquare_name.bind("<ButtonPress-1>", on_click_square_name)
 
 
             elif name == "circle":
-                name_canvas_circle = tkinter.Canvas(frameNames, width=120, height=75, bg=global_background, bd=0,
-                                                    highlightthickness=0, relief="ridge")
-                name_canvas_circle.grid(column=count, row=1, padx=padx)
-                name_circle = name_canvas_circle.create_text(60,37.5, text="Circle")
-                name_canvas_circle.itemconfig(name_circle, font=("MyriadPro-Regular", 20), fill=text_colour)
-                name_canvas_circle.bind("<ButtonPress-1>", on_click_circle_name)
+                canvasCircle_name = tkinter.Canvas(frameNames, width=120, height=75, bg=global_background, bd=0,
+                                                   highlightthickness=0, relief="ridge")
+                canvasCircle_name.grid(column=count, row=1, padx=padx)
+                name_circle = canvasCircle_name.create_text(60, 37.5, text="Circle")
+                canvasCircle_name.itemconfig(name_circle, font=("MyriadPro-Regular", 20), fill=text_colour)
+                canvasCircle_name.bind("<ButtonPress-1>", on_click_circle_name)
 
             elif name == "triangle":
-                name_canvas_triangle = tkinter.Canvas(frameNames, width=120, height=75, bg=global_background, bd=0,
-                                                    highlightthickness=0, relief="ridge")
-                name_canvas_triangle.grid(column=count, row=1, padx=padx)
-                name_triangle = name_canvas_triangle.create_text(60,37.5, text="Triangle")
-                name_canvas_triangle.itemconfig(name_triangle, font=("MyriadPro-Regular", 20), fill=text_colour)
-                name_canvas_triangle.bind("<ButtonPress-1>", on_click_triangle_name)
+                canvasTriangle_name = tkinter.Canvas(frameNames, width=120, height=75, bg=global_background, bd=0,
+                                                     highlightthickness=0, relief="ridge")
+                canvasTriangle_name.grid(column=count, row=1, padx=padx)
+                name_triangle = canvasTriangle_name.create_text(60, 37.5, text="Triangle")
+                canvasTriangle_name.itemconfig(name_triangle, font=("MyriadPro-Regular", 20), fill=text_colour)
+                canvasTriangle_name.bind("<ButtonPress-1>", on_click_triangle_name)
 
             elif name == "diamond":
-                name_canvas_diamond = tkinter.Canvas(frameNames, width=120, height=75, bg=global_background, bd=0,
+                canvasDiamond_name = tkinter.Canvas(frameNames, width=120, height=75, bg=global_background, bd=0,
                                                     highlightthickness=0, relief="ridge")
-                name_canvas_diamond.grid(column=count, row=1, padx=padx)
-                name_diamond = name_canvas_diamond.create_text(60,37.5, text="Diamond")
-                name_canvas_diamond.itemconfig(name_diamond, font=("MyriadPro-Regular", 20), fill=text_colour)
-                name_canvas_diamond.bind("<ButtonPress-1>", on_click_diamond_name)
+                canvasDiamond_name.grid(column=count, row=1, padx=padx)
+                name_diamond = canvasDiamond_name.create_text(60, 37.5, text="Diamond")
+                canvasDiamond_name.itemconfig(name_diamond, font=("MyriadPro-Regular", 20), fill=text_colour)
+                canvasDiamond_name.bind("<ButtonPress-1>", on_click_diamond_name)
 
             elif name == "pentagon":
-                name_canvas_pentagon = tkinter.Canvas(frameNames, width=120, height=75, bg=global_background, bd=0,
-                                                    highlightthickness=0, relief="ridge")
-                name_canvas_pentagon.grid(column=count, row=1, padx=padx)
-                name_pentagon = name_canvas_pentagon.create_text(60,37.5, text="Pentagon")
-                name_canvas_pentagon.itemconfig(name_pentagon, font=("MyriadPro-Regular", 20), fill=text_colour)
-                name_canvas_pentagon.bind("<ButtonPress-1>", on_click_pentagon_name)
+                canvasPentagon_name = tkinter.Canvas(frameNames, width=120, height=75, bg=global_background, bd=0,
+                                                     highlightthickness=0, relief="ridge")
+                canvasPentagon_name.grid(column=count, row=1, padx=padx)
+                name_pentagon = canvasPentagon_name.create_text(60, 37.5, text="Pentagon")
+                canvasPentagon_name.itemconfig(name_pentagon, font=("MyriadPro-Regular", 20), fill=text_colour)
+                canvasPentagon_name.bind("<ButtonPress-1>", on_click_pentagon_name)
 
             elif name == "hexagon":
-                name_canvas_hexagon = tkinter.Canvas(frameNames, width=120, height=75, bg=global_background, bd=0,
+                canvasHexagon_name = tkinter.Canvas(frameNames, width=120, height=75, bg=global_background, bd=0,
                                                     highlightthickness=0, relief="ridge")
-                name_canvas_hexagon.grid(column=count, row=1, padx=padx)
-                name_hexagon = name_canvas_hexagon.create_text(60,37.5, text="Hexagon")
-                name_canvas_hexagon.itemconfig(name_hexagon, font=("MyriadPro-Regular", 20), fill=text_colour)
-                name_canvas_hexagon.bind("<ButtonPress-1>", on_click_hexagon_name)
+                canvasHexagon_name.grid(column=count, row=1, padx=padx)
+                name_hexagon = canvasHexagon_name.create_text(60, 37.5, text="Hexagon")
+                canvasHexagon_name.itemconfig(name_hexagon, font=("MyriadPro-Regular", 20), fill=text_colour)
+                canvasHexagon_name.bind("<ButtonPress-1>", on_click_hexagon_name)
 
             elif name == "trapezium":
-                name_canvas_trapezium = tkinter.Canvas(frameNames, width=120, height=75, bg=global_background, bd=0,
-                                                    highlightthickness=0, relief="ridge")
-                name_canvas_trapezium.grid(column=count, row=1, padx=padx)
-                name_trapezium = name_canvas_trapezium.create_text(60,37.5, text="Trapezium")
-                name_canvas_trapezium.itemconfig(name_trapezium, font=("MyriadPro-Regular", 20), fill=text_colour)
-                name_canvas_trapezium.bind("<ButtonPress-1>", on_click_trapezium_name)
+                canvasTrapezium_name = tkinter.Canvas(frameNames, width=120, height=75, bg=global_background, bd=0,
+                                                      highlightthickness=0, relief="ridge")
+                canvasTrapezium_name.grid(column=count, row=1, padx=padx)
+                name_trapezium = canvasTrapezium_name.create_text(60, 37.5, text="Trapezium")
+                canvasTrapezium_name.itemconfig(name_trapezium, font=("MyriadPro-Regular", 20), fill=text_colour)
+                canvasTrapezium_name.bind("<ButtonPress-1>", on_click_trapezium_name)
                 
-    def win():
+    def putWin():
         global toplevel
         toplevel = tkinter.Toplevel()
         winner = tkinter.Label(toplevel, text="You won!")
         continuebutton = tkinter.Button(toplevel, text="Continue", command=toplevel.destroy)
-        reset()
+        getReset()
         winner.pack(pady = 20, padx = 10)
         continuebutton.pack(pady = 5)
 
-    def reset():
-        global count_pairs, shape_pairs
+    def getReset():
+        global pairsCount, pairsShape
 
-        count_pairs = 0
-        shape_pairs.clear()
+        pairsCount = 0
+        pairsShape.clear()
         line_canvas.delete("all")
-        generateShapes(3)
+        getShapes(3)
 
-    generateShapes(3)
+    getShapes(3)
 
     frameShapes.place(relx=.5, rely=.65, anchor="center")
     frameNames.place(relx=.5, rely=.2, anchor="center")
-
-
     window.mainloop()
 
 run()
