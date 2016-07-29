@@ -16,6 +16,18 @@ def run():
     wincountLabelText = tkinter.Label(frameWincount, textvariable=wincountNumber,background="white").pack()
     wincountNumber.set("0")
 
+    canvases = {}
+
+    shapes = ['circle', 'square']
+
+    for i in shapes:
+        canvases[i] = tkinter.Canvas(window, height=100, width=100, background="white")
+
+        name_square = canvases[i].create_text(60, 37.5, text=i.title())
+        canvases[i].itemconfig(name_square, font=("MyriadPro-Regular", 20,), fill="black")
+
+        canvases[i].pack()
+
 
 
     frameWincount.pack()

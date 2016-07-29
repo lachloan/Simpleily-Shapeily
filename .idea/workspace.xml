@@ -2,11 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3193da5c-9030-490d-b4b5-2733ac4dd6a0" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/game.py" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/actualtesting.py" afterPath="$PROJECT_DIR$/actualtesting.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.py" afterPath="$PROJECT_DIR$/main.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/teacher.py" afterPath="$PROJECT_DIR$/teacher.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/game.pyw" afterPath="$PROJECT_DIR$/game.pyw" />
     </list>
     <ignored path="Simpleily-Shapeily.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -19,14 +17,14 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/Simpleily-Shapeily$actualtesting.coverage" NAME="actualtesting Coverage Results" MODIFIED="1469697488198" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Simpleily-Shapeily$actualtesting.coverage" NAME="actualtesting Coverage Results" MODIFIED="1469787319129" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Simpleily-Shapeily$game.coverage" NAME="game Coverage Results" MODIFIED="1469778079485" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Simpleily-Shapeily$testing.coverage" NAME="testing Coverage Results" MODIFIED="1468122455492" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Simpleily-Shapeily$shapeimplementation.coverage" NAME="shapeimplementation Coverage Results" MODIFIED="1469615702255" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Simpleily-Shapeily$teacher.coverage" NAME="teacher Coverage Results" MODIFIED="1468122822714" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Simpleily-Shapeily$canvastest.coverage" NAME="canvastest Coverage Results" MODIFIED="1468121618150" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Simpleily-Shapeily$main.coverage" NAME="main Coverage Results" MODIFIED="1469522565606" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Simpleily-Shapeily$game_pyw.coverage" NAME="game.pyw Coverage Results" MODIFIED="1469786310572" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Simpleily-Shapeily$game_pyw.coverage" NAME="game.pyw Coverage Results" MODIFIED="1469793794618" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
@@ -50,12 +48,14 @@
       <file leaf-file-name="game.pyw" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/game.pyw">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="402">
-              <caret line="270" column="16" selection-start-line="270" selection-start-column="16" selection-end-line="270" selection-end-column="16" />
+            <state relative-caret-position="255">
+              <caret line="220" column="55" selection-start-line="220" selection-start-column="55" selection-end-line="220" selection-end-column="55" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
-                <element signature="e#3092#5578#0" expanded="false" />
-                <element signature="e#5611#10890#0" expanded="false" />
+                <element signature="e#3199#5685#0" expanded="false" />
+                <element signature="e#5718#10997#0" expanded="false" />
+                <element signature="e#13002#13194#0" expanded="false" />
+                <element signature="e#13226#13445#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -64,8 +64,8 @@
       <file leaf-file-name="actualtesting.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/actualtesting.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="16" column="4" selection-start-line="16" selection-start-column="4" selection-end-line="16" selection-end-column="27" />
+            <state relative-caret-position="300">
+              <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -93,9 +93,9 @@
         <option value="$PROJECT_DIR$/teacher.py" />
         <option value="$PROJECT_DIR$/pentagon.py" />
         <option value="$PROJECT_DIR$/shapeimplementation.py" />
-        <option value="$PROJECT_DIR$/actualtesting.py" />
         <option value="$PROJECT_DIR$/game.py" />
         <option value="$PROJECT_DIR$/main.py" />
+        <option value="$PROJECT_DIR$/actualtesting.py" />
         <option value="$PROJECT_DIR$/game.pyw" />
       </list>
     </option>
@@ -383,8 +383,8 @@
     <recent_temporary>
       <list size="5">
         <item index="0" class="java.lang.String" itemvalue="Python.game.pyw" />
-        <item index="1" class="java.lang.String" itemvalue="Python.game" />
-        <item index="2" class="java.lang.String" itemvalue="Python.actualtesting" />
+        <item index="1" class="java.lang.String" itemvalue="Python.actualtesting" />
+        <item index="2" class="java.lang.String" itemvalue="Python.game" />
         <item index="3" class="java.lang.String" itemvalue="Python.shapeimplementation" />
         <item index="4" class="java.lang.String" itemvalue="Python.main" />
       </list>
@@ -769,14 +769,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/actualtesting.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="4" selection-start-line="16" selection-start-column="4" selection-end-line="16" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/game.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
@@ -793,14 +785,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/actualtesting.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/game.pyw">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="402">
-          <caret line="270" column="16" selection-start-line="270" selection-start-column="16" selection-end-line="270" selection-end-column="16" />
+        <state relative-caret-position="255">
+          <caret line="220" column="55" selection-start-line="220" selection-start-column="55" selection-end-line="220" selection-end-column="55" />
           <folding>
             <element signature="e#0#28#0" expanded="true" />
-            <element signature="e#3092#5578#0" expanded="false" />
-            <element signature="e#5611#10890#0" expanded="false" />
+            <element signature="e#3199#5685#0" expanded="false" />
+            <element signature="e#5718#10997#0" expanded="false" />
+            <element signature="e#13002#13194#0" expanded="false" />
+            <element signature="e#13226#13445#0" expanded="false" />
           </folding>
         </state>
       </provider>
