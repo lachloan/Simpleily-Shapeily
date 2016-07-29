@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="3193da5c-9030-490d-b4b5-2733ac4dd6a0" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/actualtesting.py" afterPath="$PROJECT_DIR$/actualtesting.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/game.pyw" afterPath="$PROJECT_DIR$/game.pyw" />
     </list>
     <ignored path="Simpleily-Shapeily.iws" />
@@ -24,7 +23,7 @@
     <SUITE FILE_PATH="coverage/Simpleily-Shapeily$teacher.coverage" NAME="teacher Coverage Results" MODIFIED="1468122822714" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Simpleily-Shapeily$canvastest.coverage" NAME="canvastest Coverage Results" MODIFIED="1468121618150" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Simpleily-Shapeily$main.coverage" NAME="main Coverage Results" MODIFIED="1469522565606" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Simpleily-Shapeily$game_pyw.coverage" NAME="game.pyw Coverage Results" MODIFIED="1469793794618" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Simpleily-Shapeily$game_pyw.coverage" NAME="game.pyw Coverage Results" MODIFIED="1469795304091" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
@@ -48,14 +47,15 @@
       <file leaf-file-name="game.pyw" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/game.pyw">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="220" column="55" selection-start-line="220" selection-start-column="55" selection-end-line="220" selection-end-column="55" />
+            <state relative-caret-position="291">
+              <caret line="234" column="0" selection-start-line="234" selection-start-column="0" selection-end-line="234" selection-end-column="0" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
-                <element signature="e#3199#5685#0" expanded="false" />
-                <element signature="e#5718#10997#0" expanded="false" />
-                <element signature="e#13002#13194#0" expanded="false" />
-                <element signature="e#13226#13445#0" expanded="false" />
+                <element signature="e#3337#5823#0" expanded="false" />
+                <element signature="e#10428#11338#0" expanded="false" />
+                <element signature="e#11366#11558#0" expanded="false" />
+                <element signature="e#11588#11807#0" expanded="false" />
+                <marker date="1469795292787" expanded="false" signature="9421:10387" ph="..." />
               </folding>
             </state>
           </provider>
@@ -446,7 +446,7 @@
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="46" />
+      <option name="time" value="47" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -795,14 +795,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/game.pyw">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="220" column="55" selection-start-line="220" selection-start-column="55" selection-end-line="220" selection-end-column="55" />
+        <state relative-caret-position="291">
+          <caret line="234" column="0" selection-start-line="234" selection-start-column="0" selection-end-line="234" selection-end-column="0" />
           <folding>
             <element signature="e#0#28#0" expanded="true" />
-            <element signature="e#3199#5685#0" expanded="false" />
-            <element signature="e#5718#10997#0" expanded="false" />
-            <element signature="e#13002#13194#0" expanded="false" />
-            <element signature="e#13226#13445#0" expanded="false" />
+            <element signature="e#3337#5823#0" expanded="false" />
+            <element signature="e#10428#11338#0" expanded="false" />
+            <element signature="e#11366#11558#0" expanded="false" />
+            <element signature="e#11588#11807#0" expanded="false" />
+            <marker date="1469795292787" expanded="false" signature="9421:10387" ph="..." />
           </folding>
         </state>
       </provider>

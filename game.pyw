@@ -4,7 +4,10 @@ from tkinter import ttk
 border_colour = "#808098"
 
 def run():
-    global clickedcurrentlyNames, clickedcurrentlyShapes, pairsShape, pairsCount, calledNames, calledShapes, wincountNumber, wincount, losercount, names_canvases, names_text, names_boxes
+    global clickedcurrentlyNames, clickedcurrentlyShapes, pairsShape, pairsCount, calledNames, calledShapes, wincountNumber, wincount, losercount
+    global names_canvases, names_text, names_boxes
+    global shapes_canvases, shapes_boxes, shapes_shapes
+
 
     global_background = "#C1CDCD"
     shape_colour = "#808098"
@@ -22,6 +25,10 @@ def run():
     names_canvases = {}
     names_text = {}
     names_boxes = {}
+
+    shapes_canvases = {}
+    shapes_shapes = {}
+    shapes_boxes = {}
 
     window = tkinter.Tk()
     window.title("Simpiley Shapeily - Game Panel")
@@ -125,75 +132,59 @@ def run():
 
     def get_shapes(x):
         global calledShapes
-        global shape_canvas_square, shape_canvas_triangle, shape_canvas_circle, shape_canvas_diamond, shape_canvas_pentagon, shape_canvas_hexagon, shape_canvas_trapezium
+        global shapes_canvases, shapes_shapes
 
 
         shapes_list = ['square', 'triangle', 'circle', 'diamond', 'pentagon', 'hexagon', 'trapezium']
         count = 0
         calledShapes = []
         shape_padx = 100
-        shapes_shapes = []
 
         while count < 3: # How many shapes to display
             shape = random.choice(shapes_list)
             while shape in calledShapes: # Get unique shape (gets rid of duplicates)
                 shape = random.choice(shapes_list)
 
+
+            shapes_canvases[shape] = tkinter.Canvas(frameShapes, width=170, height=170, bg=global_background, bd=0,
+                                                    highlightthickness=0, relief="ridge")
+            shapes_canvases[shape].grid(row=1, column=count, padx=shape_padx)
+
+
             if shape == "square":
-                shape_canvas_square = tkinter.Canvas(frameShapes, width=170, height=170, bg=global_background, bd=0,
-                                                     highlightthickness=0, relief="ridge")
-                shapes_shapes.append(shape_canvas_square.create_rectangle(10, 10, 160, 160, fill=shape_colour,
-                                                                outline=global_background))  # Square
-                shape_canvas_square.grid(row=1, column=count, padx=shape_padx)
-                shape_canvas_square.bind("<ButtonPress-1>", lambda x: on_click("shape", "square"))
+                shapes_shapes[shape] = (shapes_canvases[shape].create_rectangle(10, 10, 160, 160, fill=shape_colour,
+                                                                                outline=global_background))  # Square
+                shapes_canvases[shape].bind("<ButtonPress-1>", lambda x: on_click("shape", "square"))
 
             elif shape == "triangle":
-                shape_canvas_triangle = tkinter.Canvas(frameShapes, width=170, height=170, bg=global_background, bd=0,
-                                                       highlightthickness=0, relief="ridge")
-                shapes_shapes.append(shape_canvas_triangle.create_polygon(10, 160, 85, 10, 160, 160, fill=shape_colour,
-                                                                outline=global_background))
-                shape_canvas_triangle.grid(row=1, column=count, padx=shape_padx)
-                shape_canvas_triangle.bind("<ButtonPress-1>", lambda x: on_click("shape", "triangle"))
+                shapes_shapes[shape] = (shapes_canvases[shape].create_polygon(10, 160, 85, 10, 160, 160, fill=shape_colour,
+                                                                              outline=global_background))
+                shapes_canvases[shape].bind("<ButtonPress-1>", lambda x: on_click("shape", "triangle"))
 
             elif shape == "circle":
-                shape_canvas_circle = tkinter.Canvas(frameShapes, width=170, height=170, bg=global_background, bd=0,
-                                                     highlightthickness=0, relief="ridge")
-                shapes_shapes.append(shape_canvas_circle.create_oval(10, 10, 160, 160, fill=shape_colour,
-                                                                outline=global_background))
-                shape_canvas_circle.grid(row=1, column=count, padx=shape_padx)
-                shape_canvas_circle.bind("<ButtonPress-1>", lambda x: on_click("shape", "circle"))
+                shapes_shapes[shape] = (shapes_canvases[shape].create_oval(10, 10, 160, 160, fill=shape_colour,
+                                                                           outline=global_background))
+                shapes_canvases[shape].bind("<ButtonPress-1>", lambda x: on_click("shape", "circle"))
 
             elif shape == "diamond":
-                shape_canvas_diamond = tkinter.Canvas(frameShapes, width=170, height=170, bg=global_background, bd=0,
-                                                      highlightthickness=0, relief="ridge")
-                shapes_shapes.append(shape_canvas_diamond.create_polygon(10, 85, 85, 10, 160, 85, 85, 160, fill=shape_colour,
-                                                                outline=global_background))  # Diamond
-                shape_canvas_diamond.grid(row=1, column=count, padx=shape_padx)
-                shape_canvas_diamond.bind("<ButtonPress-1>", lambda x: on_click("shape", "diamond"))
+                shapes_shapes[shape] = (shapes_canvases[shape].create_polygon(10, 85, 85, 10, 160, 85, 85, 160, fill=shape_colour,
+                                                                              outline=global_background))  # Diamond
+                shapes_canvases[shape].bind("<ButtonPress-1>", lambda x: on_click("shape", "diamond"))
 
             elif shape == "pentagon":
-                shape_canvas_pentagon = tkinter.Canvas(frameShapes, width=170, height=170, bg=global_background, bd=0,
-                                                      highlightthickness=0, relief="ridge")
-                shapes_shapes.append(shape_canvas_pentagon.create_polygon(85, 0, 4, 59, 35, 154, 135, 154, 166, 59, fill=shape_colour,
-                                                                outline=global_background))  # Pentagon
-                shape_canvas_pentagon.grid(row=1, column=count, padx=shape_padx)
-                shape_canvas_pentagon.bind("<ButtonPress-1>", lambda x: on_click("shape", "pentagon"))
+                shapes_shapes[shape] = (shapes_canvases[shape].create_polygon(85, 0, 4, 59, 35, 154, 135, 154, 166, 59, fill=shape_colour,
+                                                                              outline=global_background))  # Pentagon
+                shapes_canvases[shape].bind("<ButtonPress-1>", lambda x: on_click("shape", "pentagon"))
 
             elif shape == "hexagon":
-                shape_canvas_hexagon = tkinter.Canvas(frameShapes, width=170, height=170, bg=global_background, bd=0,
-                                                      highlightthickness=0, relief="ridge")
-                shapes_shapes.append(shape_canvas_hexagon.create_polygon(128,11,42,11,0,85,43,159,127,159,170,85, fill=shape_colour,
-                                                                outline=global_background))  # Hexagon
-                shape_canvas_hexagon.grid(row=1, column=count, padx=shape_padx)
-                shape_canvas_hexagon.bind("<ButtonPress-1>", lambda x: on_click("shape", "hexagon"))
+                shapes_shapes[shape] = (shapes_canvases[shape].create_polygon(128, 11, 42, 11, 0, 85, 43, 159, 127, 159, 170, 85, fill=shape_colour,
+                                                                              outline=global_background))  # Hexagon
+                shapes_canvases[shape].bind("<ButtonPress-1>", lambda x: on_click("shape", "hexagon"))
 
             elif shape == "trapezium":
-                shape_canvas_trapezium = tkinter.Canvas(frameShapes, width=170, height=170, bg=global_background, bd=0,
-                                                      highlightthickness=0, relief="ridge")
-                shapes_shapes.append(shape_canvas_trapezium.create_polygon(128,51,42,51,0,134.3,170,134.3,fill=shape_colour,
-                                                                outline=global_background))  # Trapezium
-                shape_canvas_trapezium.grid(row=1, column=count, padx=shape_padx)
-                shape_canvas_trapezium.bind("<ButtonPress-1>", lambda x: on_click("shape", "trapezium"))
+                shapes_shapes[shape] = (shapes_canvases[shape].create_polygon(128, 51, 42, 51, 0, 134.3, 170, 134.3, fill=shape_colour,
+                                                                              outline=global_background))  # Trapezium
+                shapes_canvases[shape].bind("<ButtonPress-1>", lambda x: on_click("shape", "trapezium"))
 
             calledShapes.append(shape)
 
@@ -221,14 +212,10 @@ def run():
             names_text[name] = names_canvases[name].create_text(60, 37.5, text=name.title())
             names_canvases[name].itemconfig(names_text[name], font=("MyriadPro-Regular", 20), fill=text_colour)
             names_canvases[name].bind("<ButtonPress-1>", lambda event,name=name: on_click("name", name))
-                
 
-    #
-    # # Clicking Section
-    #
     def on_click(type, shape):
         print(type, shape)
-        global clickedcurrentlyNames, names_boxes, names_canvases
+        global clickedcurrentlyNames, names_boxes, names_canvases, shapes_shapes, shapes_canvases, shapes_boxes
         frameWinner.lower()
         if type == "name":
             if clickedcurrentlyNames == 0:
@@ -243,13 +230,8 @@ def run():
 
             if clickedcurrentlyShapes == 0:
                 clickedcurrentlyShapes = shape
-                exec('shape_canvas_' + shape + '.create_rectangle(0,0,169,169, fill="", outline=border_colour)')
+                shapes_boxes[shape] = shapes_canvases[shape].create_rectangle(0, 0, 169, 169, fill="", outline=border_colour)
                 check_pairs()
-
-    #
-    # # End Clicking Section
-    #
-
 
     def putWin():
         global wincountNumber, wincount
@@ -259,8 +241,6 @@ def run():
         print(str(wincount))
         wincountNumber.set("Wins: " + str(wincount))
         frameWinner.lift()
-
-
 
     def getReset():
         global pairsCount, pairsShape, wincountNumber, wincount
