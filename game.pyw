@@ -227,8 +227,10 @@ def run():
         elif type == "shape":
             global clickedcurrentlyShapes
             frameWinner.lower()
+            if clickedcurrentlyNames == 0:
+                return()
 
-            if clickedcurrentlyShapes == 0:
+            if clickedcurrentlyShapes  == 0:
                 clickedcurrentlyShapes = shape
                 shapes_boxes[shape] = shapes_canvases[shape].create_rectangle(0, 0, 169, 169, fill="", outline=border_colour)
                 check_pairs()
