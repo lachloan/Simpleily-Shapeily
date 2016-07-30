@@ -1,7 +1,6 @@
-import tkinter, random, time
+import tkinter, random
 from tkinter import ttk
 
-border_colour = "#808098"
 
 def run():
     global clickedcurrentlyNames, clickedcurrentlyShapes, pairsShape, pairsCount, calledNames, calledShapes, wincountNumber, wincount, losercount
@@ -9,10 +8,11 @@ def run():
     global shapes_canvases, shapes_boxes, shapes_shapes
 
 
-    global_background = "#C1CDCD"
-    shape_colour = "#808098"
-    text_colour = "#3A4161"
-    border_colour = "#808098"
+    global_background = "#CBE0CF"
+    shape_colour = "#347E8E"
+    text_colour = "#347E8E"
+    border_colour = "#695C60"
+    fore_colour = "#DEDDA4"
 
     wincount = 0
     calledShapes = []
@@ -48,7 +48,7 @@ def run():
     # Setting up the winner screen
     wincountNumber = tkinter.StringVar()
     frameWincount = tkinter.Frame(window, bg=global_background)
-    wincountLabelNumber = tkinter.Label(frameWincount, textvariable=wincountNumber, background=global_background, font=("MyriadPro-Regular", 15)).grid(column=2)
+    wincountLabelNumber = tkinter.Label(frameWincount, textvariable=wincountNumber, fg=text_colour, background=global_background, font=("MyriadPro-Regular", 15)).grid(column=2)
     wincountNumber.set("Wins: 0")
 
     frameWinner = tkinter.Frame(window, bg="white", height="5")
@@ -72,9 +72,7 @@ def run():
     loserLabelsub = tkinter.Label(frameLoser, textvariable=losercount, background="white",font=("MyriadPro-Regular", 15)).place(rely=0.6, relx=.5, anchor="center")
     loserButton = ttk.Button(frameLoser, text="Continue", command=lambda: getReset()).place(rely=0.7,relx=.5, anchor="center")
 
-    loserImage = tkinter.PhotoImage(
-        file='resources\\winnerBackground.gif')
-    loserCanvas.create_image(0, 0, image=loserImage, anchor="nw")
+    loserCanvas.create_image(0, 0, image=winnerImage, anchor="nw")
     loserCanvas.pack()
 
     def check_pairs():
@@ -92,21 +90,21 @@ def run():
             Pos_Name = calledNames.index(clickedcurrentlyNames)
 
             if Pos_Name == Pos_Shape:
-                line_canvas.create_line(Coord_X[Pos_Name], Coord_YN, Coord_X[Pos_Name], Coord_YS)
+                line_canvas.create_line(Coord_X[Pos_Name], Coord_YN, Coord_X[Pos_Name], Coord_YS, fill=border_colour)
 
             elif Pos_Name < Pos_Shape:
-                line_canvas.create_line(Coord_X[Pos_Name], Coord_YN, Coord_X[Pos_Name], Coord_YN + 40) # Down
-                line_canvas.create_line(Coord_X[Pos_Name], Coord_YN + 40, Coord_X[Pos_Name] + 150, Coord_YN + 40) # Across
-                line_canvas.create_line(Coord_X[Pos_Name] + 150, Coord_YN + 40, Coord_X[Pos_Name] + 150, Coord_YS - 40) # Down
-                line_canvas.create_line(Coord_X[Pos_Name] + 150, Coord_YS - 40, Coord_X[Pos_Shape], Coord_YS - 40)  # Across
-                line_canvas.create_line(Coord_X[Pos_Shape], Coord_YS - 40, Coord_X[Pos_Shape],Coord_YS)  # Down
+                line_canvas.create_line(Coord_X[Pos_Name], Coord_YN, Coord_X[Pos_Name], Coord_YN + 40, fill=border_colour) # Down
+                line_canvas.create_line(Coord_X[Pos_Name], Coord_YN + 40, Coord_X[Pos_Name] + 150, Coord_YN + 40, fill=border_colour) # Across
+                line_canvas.create_line(Coord_X[Pos_Name] + 150, Coord_YN + 40, Coord_X[Pos_Name] + 150, Coord_YS - 40, fill=border_colour) # Down
+                line_canvas.create_line(Coord_X[Pos_Name] + 150, Coord_YS - 40, Coord_X[Pos_Shape], Coord_YS - 40, fill=border_colour)  # Across
+                line_canvas.create_line(Coord_X[Pos_Shape], Coord_YS - 40, Coord_X[Pos_Shape],Coord_YS, fill=border_colour)  # Down
 
             elif Pos_Name > Pos_Shape:
-                line_canvas.create_line(Coord_X[Pos_Name], Coord_YN, Coord_X[Pos_Name], Coord_YN + 70)  # Down
-                line_canvas.create_line(Coord_X[Pos_Name], Coord_YN + 70, Coord_X[Pos_Name] - 150, Coord_YN + 70)  # Across
-                line_canvas.create_line(Coord_X[Pos_Name] - 150, Coord_YN + 70, Coord_X[Pos_Name] - 150, Coord_YS - 70)  # Down
-                line_canvas.create_line(Coord_X[Pos_Name] - 150, Coord_YS - 70, Coord_X[Pos_Shape], Coord_YS - 70)  # Across
-                line_canvas.create_line(Coord_X[Pos_Shape], Coord_YS - 70, Coord_X[Pos_Shape], Coord_YS)  # Down
+                line_canvas.create_line(Coord_X[Pos_Name], Coord_YN, Coord_X[Pos_Name], Coord_YN + 70, fill=border_colour)  # Down
+                line_canvas.create_line(Coord_X[Pos_Name], Coord_YN + 70, Coord_X[Pos_Name] - 150, Coord_YN + 70, fill=border_colour)  # Across
+                line_canvas.create_line(Coord_X[Pos_Name] - 150, Coord_YN + 70, Coord_X[Pos_Name] - 150, Coord_YS - 70, fill=border_colour)  # Down
+                line_canvas.create_line(Coord_X[Pos_Name] - 150, Coord_YS - 70, Coord_X[Pos_Shape], Coord_YS - 70, fill=border_colour)  # Across
+                line_canvas.create_line(Coord_X[Pos_Shape], Coord_YS - 70, Coord_X[Pos_Shape], Coord_YS, fill=border_colour)  # Down
 
 
             clickedcurrentlyShapes = 0
@@ -214,15 +212,13 @@ def run():
             names_canvases[name].bind("<ButtonPress-1>", lambda event,name=name: on_click("name", name))
 
     def on_click(type, shape):
-        print(type, shape)
         global clickedcurrentlyNames, names_boxes, names_canvases, shapes_shapes, shapes_canvases, shapes_boxes
         frameWinner.lower()
         if type == "name":
             if clickedcurrentlyNames == 0:
                 clickedcurrentlyNames = shape
-                print(shape)
                 names_boxes[shape] = names_canvases[shape].create_rectangle(0, 0, 119, 74, fill="", outline=border_colour)
-                names_boxes[shape] = names_canvases[shape].create_rectangle(55, 65, 65, 75, fill="#808098", outline=border_colour)
+                names_boxes[shape] = names_canvases[shape].create_rectangle(55, 65, 65, 75, fill=fore_colour, outline=border_colour)
 
         elif type == "shape":
             global clickedcurrentlyShapes
@@ -237,7 +233,6 @@ def run():
 
     def putWin():
         global wincountNumber, wincount
-
         getReset()
         wincount = wincount + 1
         print(str(wincount))
