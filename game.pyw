@@ -199,10 +199,10 @@ def run():
 
             count += 1
 
-        get_names()
+        get_names(shapes_called)
 
-    def get_names():
-        global shapes_called, names_called
+    def get_names(shapes_called):
+        global names_called
         global names_canvases, names_text
         names_called = []
         count = 0
