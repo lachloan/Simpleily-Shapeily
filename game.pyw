@@ -98,25 +98,25 @@ def run():
             Coord_YS = 383
             Coord_YN = 180
 
-            Pos_Shape = shapes_called.index(clicked_currently_shapes)
-            Pos_Name = names_called.index(clicked_currently_names)
+            shape_pos = shapes_called.index(clicked_currently_shapes)
+            name_pos = names_called.index(clicked_currently_names)
 
-            if Pos_Name == Pos_Shape:
-                line_canvas.create_line(Coord_X[Pos_Name], Coord_YN, Coord_X[Pos_Name], Coord_YS, fill=border_colour)
+            if name_pos == shape_pos:
+                line_canvas.create_line(Coord_X[name_pos], Coord_YN, Coord_X[name_pos], Coord_YS, fill=border_colour)
 
-            elif Pos_Name < Pos_Shape:
-                line_canvas.create_line(Coord_X[Pos_Name], Coord_YN, Coord_X[Pos_Name], Coord_YN + 40, fill=border_colour) # Down
-                line_canvas.create_line(Coord_X[Pos_Name], Coord_YN + 40, Coord_X[Pos_Name] + 150, Coord_YN + 40, fill=border_colour) # Across
-                line_canvas.create_line(Coord_X[Pos_Name] + 150, Coord_YN + 40, Coord_X[Pos_Name] + 150, Coord_YS - 40, fill=border_colour) # Down
-                line_canvas.create_line(Coord_X[Pos_Name] + 150, Coord_YS - 40, Coord_X[Pos_Shape], Coord_YS - 40, fill=border_colour)  # Across
-                line_canvas.create_line(Coord_X[Pos_Shape], Coord_YS - 40, Coord_X[Pos_Shape],Coord_YS, fill=border_colour)  # Down
+            elif name_pos < shape_pos:
+                line_canvas.create_line(Coord_X[name_pos], Coord_YN, Coord_X[name_pos], Coord_YN + 40, fill=border_colour) # Down
+                line_canvas.create_line(Coord_X[name_pos], Coord_YN + 40, Coord_X[name_pos] + 150, Coord_YN + 40, fill=border_colour) # Across
+                line_canvas.create_line(Coord_X[name_pos] + 150, Coord_YN + 40, Coord_X[name_pos] + 150, Coord_YS - 40, fill=border_colour) # Down
+                line_canvas.create_line(Coord_X[name_pos] + 150, Coord_YS - 40, Coord_X[shape_pos], Coord_YS - 40, fill=border_colour)  # Across
+                line_canvas.create_line(Coord_X[shape_pos], Coord_YS - 40, Coord_X[shape_pos],Coord_YS, fill=border_colour)  # Down
 
-            elif Pos_Name > Pos_Shape:
-                line_canvas.create_line(Coord_X[Pos_Name], Coord_YN, Coord_X[Pos_Name], Coord_YN + 70, fill=border_colour)  # Down
-                line_canvas.create_line(Coord_X[Pos_Name], Coord_YN + 70, Coord_X[Pos_Name] - 150, Coord_YN + 70, fill=border_colour)  # Across
-                line_canvas.create_line(Coord_X[Pos_Name] - 150, Coord_YN + 70, Coord_X[Pos_Name] - 150, Coord_YS - 70, fill=border_colour)  # Down
-                line_canvas.create_line(Coord_X[Pos_Name] - 150, Coord_YS - 70, Coord_X[Pos_Shape], Coord_YS - 70, fill=border_colour)  # Across
-                line_canvas.create_line(Coord_X[Pos_Shape], Coord_YS - 70, Coord_X[Pos_Shape], Coord_YS, fill=border_colour)  # Down
+            elif name_pos > shape_pos:
+                line_canvas.create_line(Coord_X[name_pos], Coord_YN, Coord_X[name_pos], Coord_YN + 70, fill=border_colour)  # Down
+                line_canvas.create_line(Coord_X[name_pos], Coord_YN + 70, Coord_X[name_pos] - 150, Coord_YN + 70, fill=border_colour)  # Across
+                line_canvas.create_line(Coord_X[name_pos] - 150, Coord_YN + 70, Coord_X[name_pos] - 150, Coord_YS - 70, fill=border_colour)  # Down
+                line_canvas.create_line(Coord_X[name_pos] - 150, Coord_YS - 70, Coord_X[shape_pos], Coord_YS - 70, fill=border_colour)  # Across
+                line_canvas.create_line(Coord_X[shape_pos], Coord_YS - 70, Coord_X[shape_pos], Coord_YS, fill=border_colour)  # Down
 
 
             clicked_currently_shapes = 0
