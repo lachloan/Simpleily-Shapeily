@@ -6,12 +6,15 @@ def run():
     global clicked_currently_names, clicked_currently_shapes, pairs_current, pairs_count, names_called, shapes_called, winner_count_label_string, winner_count, losercount, popup_canvas, has_ran
     global names_canvases, names_text, names_boxes
     global shapes_canvases, shapes_boxes, shapes_shapes
+    global popup_status
 
     window = tkinter.Tk()
     window.title("Simpiley Shapeily - Game Panel")
     window.geometry("1280x720")
     window.resizable(0, 0)
     window.configure(background="white")
+
+    popup_status = 0
 
     global_background = "#CBE0CF"
     shape_colour = "#347E8E"
@@ -59,10 +62,12 @@ def run():
 
 
     def get_popup(gamestate, count):
-        global popup_canvas, popup_canvas_text, popup_canvas_count, has_ran
+        global popup_canvas, popup_canvas_text, popup_canvas_count, has_ran, popup_status
 
         popup_button = ttk.Button(popup_frame, text="Restart", command=lambda: get_reset())
         popup_button.place(rely=0.7, relx=.5,anchor="center")
+
+        popup_status = 1
 
         if gamestate == "loose":
             if has_ran == True:
@@ -225,6 +230,9 @@ def run():
     def on_click(type, shape):
         global clicked_currently_names, clicked_currently_shapes, names_boxes, names_canvases, shapes_shapes, shapes_canvases, shapes_boxes
 
+        if popup_status == 1:
+            return
+
         if type == "name":
             if clicked_currently_names == 0:
                 clicked_currently_names = shape
@@ -241,7 +249,7 @@ def run():
                 check_pairs()
 
     def get_reset():
-        global pairs_count, pairs_current, winner_count_label_string, winner_count, popup_canvas, has_ran
+        global pairs_count, pairs_current, winner_count_label_string, winner_count, popup_canvas, has_ran, popup_status
 
         pairs_count = 0
         pairs_current.clear()
@@ -250,6 +258,8 @@ def run():
         popup_frame.lower()
         has_ran = True
         get_shapes(3)
+
+        popup_status = 0
 
     get_shapes(3)
 
