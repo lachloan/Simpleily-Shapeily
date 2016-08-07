@@ -6,7 +6,7 @@ def run():
     global clicked_currently_names, clicked_currently_shapes, pairs_current, pairs_count, names_called, shapes_called, winner_count_label_string, winner_count, losercount, popup_canvas, has_ran
     global names_canvases, names_text, names_boxes
     global shapes_canvases, shapes_boxes, shapes_shapes
-    global popup_status
+    global popup_status,timer_count, timer_time
 
     window = tkinter.Tk()
     window.title("Simpiley Shapeily - Game Panel")
@@ -37,6 +37,8 @@ def run():
     shapes_shapes = {}
     shapes_boxes = {}
 
+    timer_count = 0
+    timer_time = 1000
 
     # Canvas for connecting lines
     line_canvas = tkinter.Canvas(window, width=1280, height=720, bg=global_background)
@@ -60,6 +62,32 @@ def run():
     popup_canvas.create_image(0, 0, image=popup_canvas_background, anchor="nw")
     popup_canvas.pack()
 
+    def change_background():
+        global shapes_canvases, shapes_shapes, timer_count, timer_time
+
+        if timer_count % 2 == 0:
+            fill = "#347E8E"
+
+        else:
+            fill = "#695C60"
+
+        for i in shapes_shapes:
+            shapes_canvases[i].itemconfig(shapes_shapes[i], fill=fill)
+
+        if timer_time <= 0:
+            for i in shapes_shapes:
+                shapes_canvases[i].itemconfig(shapes_shapes[i], fill="red")
+
+            return
+
+        else:
+            window.after(timer_time, lambda: change_background())
+            timer_count+= 1
+            reduceby = 10 * 6
+            timer_time = timer_time - reduceby
+            print(timer_time)
+
+
 
     def get_popup(gamestate, count):
         global popup_canvas, popup_canvas_text, popup_canvas_count, has_ran, popup_status
@@ -79,6 +107,9 @@ def run():
                                                          font=("MyriadPro-Regular", 20))
             popup_canvas_count = popup_canvas.create_text(250, 180, text="Rounds Won: " + str(count),
                                                          font=("MyriadPro-Regular", 15))
+
+            winner_count_label_string.set("Wins: 0")
+
             popup_button.config(text="Reset")
         elif gamestate == "win":
             if has_ran == True:
@@ -232,6 +263,8 @@ def run():
 
         if popup_status == 1:
             return
+
+        change_background()
 
         if type == "name":
             if clicked_currently_names == 0:
