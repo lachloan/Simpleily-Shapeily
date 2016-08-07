@@ -6,7 +6,7 @@ def run():
     global clicked_currently_names, clicked_currently_shapes, pairs_current, pairs_count, names_called, shapes_called, winner_count_label_string, winner_count, losercount, popup_canvas, has_ran
     global names_canvases, names_text, names_boxes
     global shapes_canvases, shapes_boxes, shapes_shapes
-    global popup_status,timer_count, timer_time
+    global popup_status,timer_count, timer_time, timer_gamestate
 
     window = tkinter.Tk()
     window.title("Simpiley Shapeily - Game Panel")
@@ -39,6 +39,7 @@ def run():
 
     timer_count = 0
     timer_time = 1000
+    timer_gamestate = "stopped"
 
     # Canvas for connecting lines
     line_canvas = tkinter.Canvas(window, width=1280, height=720, bg=global_background)
@@ -62,8 +63,8 @@ def run():
     popup_canvas.create_image(0, 0, image=popup_canvas_background, anchor="nw")
     popup_canvas.pack()
 
-    def change_background():
-        global shapes_canvases, shapes_shapes, timer_count, timer_time
+    def init_timer():
+        global shapes_canvases, shapes_shapes, timer_count, timer_time, winner_count, timer_gamestate
 
         if timer_count % 2 == 0:
             fill = "#347E8E"
@@ -74,30 +75,39 @@ def run():
         for i in shapes_shapes:
             shapes_canvases[i].itemconfig(shapes_shapes[i], fill=fill)
 
-        if timer_time <= 0:
+        if timer_time <= 0 and timer_gamestate == "running":
             for i in shapes_shapes:
                 shapes_canvases[i].itemconfig(shapes_shapes[i], fill="red")
 
+                get_popup("loose", winner_count)
+                winner_count = 0
+
+                timer_time = 1000
+                timer_count = 0
+
             return
 
-        else:
-            window.after(timer_time, lambda: change_background())
+        elif timer_gamestate == "running":
+            window.after(timer_time, lambda: init_timer())
             timer_count+= 1
-            reduceby = 10 * 6
+            if winner_count == 0:
+                reduceby = 10
+            else:
+                reduceby = 20 * winner_count
             timer_time = timer_time - reduceby
             print(timer_time)
 
-
-
-    def get_popup(gamestate, count):
-        global popup_canvas, popup_canvas_text, popup_canvas_count, has_ran, popup_status
+    def get_popup(outcome, count):
+        global popup_canvas, popup_canvas_text, popup_canvas_count, has_ran, popup_status, timer_gamestate
 
         popup_button = ttk.Button(popup_frame, text="Restart", command=lambda: get_reset())
         popup_button.place(rely=0.7, relx=.5,anchor="center")
 
         popup_status = 1
 
-        if gamestate == "loose":
+        timer_gamestate = "stopped"
+
+        if outcome == "loose":
             if has_ran == True:
                 popup_canvas.delete(popup_canvas_text)
                 popup_canvas.delete(popup_canvas_count)
@@ -111,7 +121,7 @@ def run():
             winner_count_label_string.set("Wins: 0")
 
             popup_button.config(text="Reset")
-        elif gamestate == "win":
+        elif outcome == "win":
             if has_ran == True:
                 popup_canvas.delete(popup_canvas_text)
                 popup_canvas.delete(popup_canvas_count)
@@ -178,7 +188,10 @@ def run():
     def get_shapes(x):
         global shapes_called
         global shapes_canvases, shapes_shapes
+        global timer_gamestate
 
+        timer_gamestate = "running"
+        init_timer()
 
         shapes_list = ['square', 'triangle', 'circle', 'diamond', 'pentagon', 'hexagon', 'trapezium']
         count = 0
@@ -264,8 +277,6 @@ def run():
         if popup_status == 1:
             return
 
-        change_background()
-
         if type == "name":
             if clicked_currently_names == 0:
                 clicked_currently_names = shape
@@ -282,7 +293,7 @@ def run():
                 check_pairs()
 
     def get_reset():
-        global pairs_count, pairs_current, winner_count_label_string, winner_count, popup_canvas, has_ran, popup_status
+        global pairs_count, pairs_current, winner_count_label_string, winner_count, popup_canvas, has_ran, popup_status, timer_count, timer_time
 
         pairs_count = 0
         pairs_current.clear()
@@ -291,6 +302,9 @@ def run():
         popup_frame.lower()
         has_ran = True
         get_shapes(3)
+
+        timer_count = 0
+        timer_time = 1000
 
         popup_status = 0
 
