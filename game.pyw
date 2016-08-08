@@ -102,7 +102,6 @@ def run(mode):
         for i in shapes_shapes:
             shapes_canvases[i].itemconfig(shapes_shapes[i], fill=fill)
 
-
     def get_popup(outcome, count):
         global popup_canvas, popup_canvas_text, popup_canvas_count, has_ran, popup_status, timer_gamestate
 
@@ -141,7 +140,6 @@ def run(mode):
 
     def check_pairs():
         global clicked_currently_shapes, clicked_currently_names, pairs_current, pairs_count, names_called, shapes_called, winner_count, timer_gamestate
-
 
         if clicked_currently_shapes and clicked_currently_names is not 0:
             pairs_current[clicked_currently_names] = clicked_currently_shapes
@@ -286,6 +284,9 @@ def run(mode):
             return
 
         if type == "name":
+            if shape in pairs_current:
+                return
+
             if clicked_currently_names == 0:
                 clicked_currently_names = shape
                 names_boxes[shape] = names_canvases[shape].create_rectangle(0, 0, 119, 74, fill="", outline=border_colour)
@@ -294,6 +295,9 @@ def run(mode):
         elif type == "shape":
             if clicked_currently_names == 0:
                 return()
+
+            if shape in pairs_current:
+                return
 
             if clicked_currently_shapes  == 0:
                 clicked_currently_shapes = shape
