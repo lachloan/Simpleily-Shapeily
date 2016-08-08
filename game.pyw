@@ -2,7 +2,7 @@ import tkinter, random
 from tkinter import ttk
 
 
-def run():
+def run(mode):
     global clicked_currently_names, clicked_currently_shapes, pairs_current, pairs_count, names_called, shapes_called, winner_count_label_string, winner_count, losercount, popup_canvas, has_ran
     global names_canvases, names_text, names_boxes
     global shapes_canvases, shapes_boxes, shapes_shapes
@@ -66,28 +66,26 @@ def run():
     def init_timer():
         global shapes_canvases, shapes_shapes, timer_count, timer_time, winner_count, timer_gamestate
 
-        if timer_count % 2 == 0:
-            fill = "#347E8E"
 
-        else:
+        if timer_count % 2 == 0:
             fill = "#695C60"
 
-        for i in shapes_shapes:
-            shapes_canvases[i].itemconfig(shapes_shapes[i], fill=fill)
+        else:
+            fill = "#347E8E"
 
         if timer_time <= 0 and timer_gamestate == "running":
-            for i in shapes_shapes:
-                shapes_canvases[i].itemconfig(shapes_shapes[i], fill="red")
+            change_fill("red")
 
-                get_popup("loose", winner_count)
-                winner_count = 0
+            get_popup("loose", winner_count)
+            winner_count = 0
 
-                timer_time = 1000
-                timer_count = 0
+            timer_time = 1000
+            timer_count = 0
 
             return
 
         elif timer_gamestate == "running":
+            window.after(timer_time, lambda: change_fill(fill))
             window.after(timer_time, lambda: init_timer())
             timer_count+= 1
             if winner_count == 0:
@@ -96,6 +94,14 @@ def run():
                 reduceby = 20 * winner_count
             timer_time = timer_time - reduceby
             print(timer_time)
+
+    def change_fill(fill):
+        if timer_gamestate != "running":
+            return()
+
+        for i in shapes_shapes:
+            shapes_canvases[i].itemconfig(shapes_shapes[i], fill=fill)
+
 
     def get_popup(outcome, count):
         global popup_canvas, popup_canvas_text, popup_canvas_count, has_ran, popup_status, timer_gamestate
@@ -134,7 +140,7 @@ def run():
             popup_button.config(text="Continue")
 
     def check_pairs():
-        global clicked_currently_shapes, clicked_currently_names, pairs_current, pairs_count, names_called, shapes_called, winner_count
+        global clicked_currently_shapes, clicked_currently_names, pairs_current, pairs_count, names_called, shapes_called, winner_count, timer_gamestate
 
 
         if clicked_currently_shapes and clicked_currently_names is not 0:
@@ -184,14 +190,16 @@ def run():
                 winner_count+=1
                 get_popup("win", winner_count)
                 winner_count_label_string.set("Wins: " + str(winner_count))
+                timer_gamestate = "stopped"
 
     def get_shapes(x):
         global shapes_called
         global shapes_canvases, shapes_shapes
         global timer_gamestate
 
-        timer_gamestate = "running"
-        init_timer()
+        if mode == "timed":
+            timer_gamestate = "running"
+            init_timer()
 
         shapes_list = ['square', 'triangle', 'circle', 'diamond', 'pentagon', 'hexagon', 'trapezium']
         count = 0
@@ -319,5 +327,3 @@ def run():
     frameLoser.lower()
 
     window.mainloop()
-
-run()

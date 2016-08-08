@@ -49,8 +49,6 @@ def main_menu():
     xOffset = findXCenter(canvasMain, canvasTextatt)
     canvasMain.move(canvasTextatt, xOffset, 75)
 
-    button = ttk.Button(frameButtons, text="Teacher Login", command=lambda:teacher.run()).grid(row=1)
-
     children_dict = database.dbLoad()
     children_pictures = {}
     children_buttons = {}
@@ -60,7 +58,7 @@ def main_menu():
         print(i)
         children_pictures[i] = tkinter.PhotoImage(
             file='resources\\child' + i + '.gif')
-        children_buttons[i] = ttk.Button(frameTwo, image=children_pictures[i], command=lambda: game.run()).grid(
+        children_buttons[i] = ttk.Button(frameTwo, image=children_pictures[i], command=lambda: game.run("timed")).grid(
             column=children_count, row=0)
         children_count = children_count + 1
 
