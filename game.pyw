@@ -90,10 +90,16 @@ def run(mode):
             timer_count+= 1
             if winner_count == 0:
                 reduceby = 10
-            else:
+
+            elif winner_count < 13:
                 reduceby = 20 * winner_count
+
+            elif winner_count > 13:
+                reduceby = 5 * winner_count
+
             timer_time = timer_time - reduceby
             print(timer_time)
+            print(reduceby)
 
     def change_fill(fill):
         if timer_gamestate != "running":

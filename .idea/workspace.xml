@@ -23,7 +23,7 @@
     <SUITE FILE_PATH="coverage/Simpleily-Shapeily$canvastest.coverage" NAME="canvastest Coverage Results" MODIFIED="1468121618150" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Simpleily-Shapeily$main.coverage" NAME="main Coverage Results" MODIFIED="1470647939864" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Simpleily-Shapeily$game_pyw.coverage" NAME="game.pyw Coverage Results" MODIFIED="1470647942939" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Simpleily-Shapeily$main_pyw.coverage" NAME="main.pyw Coverage Results" MODIFIED="1470649421874" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Simpleily-Shapeily$main_pyw.coverage" NAME="main.pyw Coverage Results" MODIFIED="1470651622733" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
@@ -47,17 +47,17 @@
       <file leaf-file-name="game.pyw" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/game.pyw">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="577">
-              <caret line="302" column="48" selection-start-line="302" selection-start-column="48" selection-end-line="302" selection-end-column="48" />
+            <state relative-caret-position="518">
+              <caret line="92" column="0" selection-start-line="92" selection-start-column="0" selection-end-line="92" selection-end-column="0" />
               <folding>
                 <element signature="e#0#22#0" expanded="true" />
-                <element signature="e#2341#3188#0" expanded="false" />
-                <element signature="e#3225#3382#0" expanded="false" />
-                <element signature="e#3427#5066#0" expanded="false" />
-                <element signature="e#5099#7938#0" expanded="false" />
-                <element signature="e#7971#11656#0" expanded="false" />
-                <element signature="e#11700#12651#0" expanded="false" />
-                <element signature="e#13761#14137#0" expanded="false" />
+                <element signature="e#3354#3511#0" expanded="false" />
+                <element signature="e#3556#5195#0" expanded="false" />
+                <element signature="e#8100#11785#0" expanded="false" />
+                <element signature="e#11829#12780#0" expanded="false" />
+                <element signature="e#12821#13859#0" expanded="false" />
+                <element signature="e#13890#14266#0" expanded="false" />
+                <marker date="1470651201470" expanded="false" signature="5219:8067" ph="..." />
               </folding>
             </state>
           </provider>
@@ -896,17 +896,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/game.pyw">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="577">
-          <caret line="302" column="48" selection-start-line="302" selection-start-column="48" selection-end-line="302" selection-end-column="48" />
+        <state relative-caret-position="518">
+          <caret line="92" column="0" selection-start-line="92" selection-start-column="0" selection-end-line="92" selection-end-column="0" />
           <folding>
             <element signature="e#0#22#0" expanded="true" />
-            <element signature="e#2341#3188#0" expanded="false" />
-            <element signature="e#3225#3382#0" expanded="false" />
-            <element signature="e#3427#5066#0" expanded="false" />
-            <element signature="e#5099#7938#0" expanded="false" />
-            <element signature="e#7971#11656#0" expanded="false" />
-            <element signature="e#11700#12651#0" expanded="false" />
-            <element signature="e#13761#14137#0" expanded="false" />
+            <element signature="e#3354#3511#0" expanded="false" />
+            <element signature="e#3556#5195#0" expanded="false" />
+            <element signature="e#8100#11785#0" expanded="false" />
+            <element signature="e#11829#12780#0" expanded="false" />
+            <element signature="e#12821#13859#0" expanded="false" />
+            <element signature="e#13890#14266#0" expanded="false" />
+            <marker date="1470651201470" expanded="false" signature="5219:8067" ph="..." />
           </folding>
         </state>
       </provider>
