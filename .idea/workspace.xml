@@ -4,7 +4,7 @@
     <list default="true" id="3193da5c-9030-490d-b4b5-2733ac4dd6a0" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/game.pyw" afterPath="$PROJECT_DIR$/game.pyw" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/main.py" afterPath="$PROJECT_DIR$/main.pyw" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.pyw" afterPath="$PROJECT_DIR$/main.pyw" />
     </list>
     <ignored path="Simpleily-Shapeily.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -23,8 +23,9 @@
     <SUITE FILE_PATH="coverage/Simpleily-Shapeily$shapeimplementation.coverage" NAME="shapeimplementation Coverage Results" MODIFIED="1469615702255" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Simpleily-Shapeily$teacher.coverage" NAME="teacher Coverage Results" MODIFIED="1468122822714" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Simpleily-Shapeily$canvastest.coverage" NAME="canvastest Coverage Results" MODIFIED="1468121618150" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Simpleily-Shapeily$main.coverage" NAME="main Coverage Results" MODIFIED="1470647796650" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Simpleily-Shapeily$game_pyw.coverage" NAME="game.pyw Coverage Results" MODIFIED="1470647723916" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Simpleily-Shapeily$main.coverage" NAME="main Coverage Results" MODIFIED="1470647939864" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Simpleily-Shapeily$game_pyw.coverage" NAME="game.pyw Coverage Results" MODIFIED="1470647942939" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Simpleily-Shapeily$main_pyw.coverage" NAME="main.pyw Coverage Results" MODIFIED="1470648177445" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
@@ -38,8 +39,8 @@
       <file leaf-file-name="main.pyw" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.pyw">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="583">
-              <caret line="62" column="43" selection-start-line="62" selection-start-column="43" selection-end-line="62" selection-end-column="43" />
+            <state relative-caret-position="413">
+              <caret line="51" column="56" selection-start-line="51" selection-start-column="56" selection-end-line="51" selection-end-column="56" />
               <folding />
             </state>
           </provider>
@@ -48,16 +49,16 @@
       <file leaf-file-name="game.pyw" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/game.pyw">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="719">
-              <caret line="329" column="0" selection-start-line="329" selection-start-column="0" selection-end-line="329" selection-end-column="0" />
+            <state relative-caret-position="340">
+              <caret line="20" column="27" selection-start-line="20" selection-start-column="27" selection-end-line="20" selection-end-column="27" />
               <folding>
                 <element signature="e#0#22#0" expanded="true" />
-                <element signature="e#2335#3182#0" expanded="false" />
-                <element signature="e#3422#5061#0" expanded="false" />
-                <element signature="e#11696#12647#0" expanded="false" />
-                <element signature="e#12688#13600#0" expanded="false" />
-                <element signature="e#13631#14007#0" expanded="false" />
-                <marker date="1470647773100" expanded="false" signature="5085:7934" ph="..." />
+                <element signature="e#2341#3188#0" expanded="false" />
+                <element signature="e#3428#5067#0" expanded="false" />
+                <element signature="e#11702#12653#0" expanded="false" />
+                <element signature="e#12694#13606#0" expanded="false" />
+                <element signature="e#13637#14013#0" expanded="false" />
+                <marker date="1470648124905" expanded="false" signature="5091:7940" ph="..." />
               </folding>
             </state>
           </provider>
@@ -99,6 +100,7 @@
         <option value="$PROJECT_DIR$/actualtesting.py" />
         <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/game.pyw" />
+        <option value="$PROJECT_DIR$/main.pyw" />
       </list>
     </option>
   </component>
@@ -200,7 +202,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://J:/School/Year 11/Software Design and Development/GitHub/Simpleily-Shapeily/game.py" />
   </component>
-  <component name="RunManager" selected="Python.main">
+  <component name="RunManager" selected="Python.main.pyw">
     <configuration default="false" name="main" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -255,24 +257,6 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
     </configuration>
-    <configuration default="false" name="shapeimplementation" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="Simpleily-Shapeily" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/shapeimplementation.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <method />
-    </configuration>
     <configuration default="false" name="game.pyw" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -287,6 +271,24 @@
       <module name="Simpleily-Shapeily" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/game.pyw" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="main.pyw" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="Simpleily-Shapeily" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.pyw" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
@@ -503,16 +505,16 @@
       <item index="0" class="java.lang.String" itemvalue="Python.main" />
       <item index="1" class="java.lang.String" itemvalue="Python.game" />
       <item index="2" class="java.lang.String" itemvalue="Python.actualtesting" />
-      <item index="3" class="java.lang.String" itemvalue="Python.shapeimplementation" />
-      <item index="4" class="java.lang.String" itemvalue="Python.game.pyw" />
+      <item index="3" class="java.lang.String" itemvalue="Python.game.pyw" />
+      <item index="4" class="java.lang.String" itemvalue="Python.main.pyw" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.main" />
+        <item index="0" class="java.lang.String" itemvalue="Python.main.pyw" />
         <item index="1" class="java.lang.String" itemvalue="Python.game.pyw" />
-        <item index="2" class="java.lang.String" itemvalue="Python.actualtesting" />
-        <item index="3" class="java.lang.String" itemvalue="Python.game" />
-        <item index="4" class="java.lang.String" itemvalue="Python.shapeimplementation" />
+        <item index="2" class="java.lang.String" itemvalue="Python.main" />
+        <item index="3" class="java.lang.String" itemvalue="Python.actualtesting" />
+        <item index="4" class="java.lang.String" itemvalue="Python.game" />
       </list>
     </recent_temporary>
   </component>
@@ -887,24 +889,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/game.pyw">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="719">
-          <caret line="329" column="0" selection-start-line="329" selection-start-column="0" selection-end-line="329" selection-end-column="0" />
+        <state relative-caret-position="340">
+          <caret line="20" column="27" selection-start-line="20" selection-start-column="27" selection-end-line="20" selection-end-column="27" />
           <folding>
             <element signature="e#0#22#0" expanded="true" />
-            <element signature="e#2335#3182#0" expanded="false" />
-            <element signature="e#3422#5061#0" expanded="false" />
-            <element signature="e#11696#12647#0" expanded="false" />
-            <element signature="e#12688#13600#0" expanded="false" />
-            <element signature="e#13631#14007#0" expanded="false" />
-            <marker date="1470647773100" expanded="false" signature="5085:7934" ph="..." />
+            <element signature="e#2341#3188#0" expanded="false" />
+            <element signature="e#3428#5067#0" expanded="false" />
+            <element signature="e#11702#12653#0" expanded="false" />
+            <element signature="e#12694#13606#0" expanded="false" />
+            <element signature="e#13637#14013#0" expanded="false" />
+            <marker date="1470648124905" expanded="false" signature="5091:7940" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main.pyw">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="583">
-          <caret line="62" column="43" selection-start-line="62" selection-start-column="43" selection-end-line="62" selection-end-column="43" />
+        <state relative-caret-position="413">
+          <caret line="51" column="56" selection-start-line="51" selection-start-column="56" selection-end-line="51" selection-end-column="56" />
           <folding />
         </state>
       </provider>

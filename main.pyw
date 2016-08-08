@@ -49,6 +49,8 @@ def main_menu():
     xOffset = findXCenter(canvasMain, canvasTextatt)
     canvasMain.move(canvasTextatt, xOffset, 75)
 
+    button = ttk.Button(frameButtons, text="Run otherway", command=lambda: game.run("other")).grid(row=1)
+
     children_dict = database.dbLoad()
     children_pictures = {}
     children_buttons = {}

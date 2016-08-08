@@ -8,7 +8,7 @@ def run(mode):
     global shapes_canvases, shapes_boxes, shapes_shapes
     global popup_status,timer_count, timer_time, timer_gamestate
 
-    window = tkinter.Tk()
+    window = tkinter.Toplevel()
     window.title("Simpiley Shapeily - Game Panel")
     window.geometry("1280x720")
     window.resizable(0, 0)
