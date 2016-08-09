@@ -283,31 +283,31 @@ def run(mode):
             names_canvases[name].itemconfig(names_text[name], font=("MyriadPro-Regular", 20), fill=text_colour)
             names_canvases[name].bind("<ButtonPress-1>", lambda event,name=name: on_click("name", name))
 
-    def on_click(type, shape):
+    def on_click(type, input_shape):
         global clicked_currently_names, clicked_currently_shapes, names_boxes, names_canvases, shapes_shapes, shapes_canvases, shapes_boxes
 
         if popup_status == 1:
             return
 
         if type == "name":
-            if shape in pairs_current:
+            if input_shape in pairs_current:
                 return
 
             if clicked_currently_names == 0:
-                clicked_currently_names = shape
-                names_boxes[shape] = names_canvases[shape].create_rectangle(0, 0, 119, 74, fill="", outline=border_colour)
-                names_boxes[shape] = names_canvases[shape].create_rectangle(55, 65, 65, 75, fill=fore_colour, outline=border_colour)
+                clicked_currently_names = input_shape
+                names_boxes[input_shape] = names_canvases[input_shape].create_rectangle(0, 0, 119, 74, fill="", outline=border_colour)
+                names_boxes[input_shape] = names_canvases[input_shape].create_rectangle(55, 65, 65, 75, fill=fore_colour, outline=border_colour)
 
         elif type == "shape":
             if clicked_currently_names == 0:
                 return()
 
-            if shape in pairs_current:
+            if input_shape in pairs_current:
                 return
 
             if clicked_currently_shapes  == 0:
-                clicked_currently_shapes = shape
-                shapes_boxes[shape] = shapes_canvases[shape].create_rectangle(0, 0, 169, 169, fill="", outline=border_colour)
+                clicked_currently_shapes = input_shape
+                shapes_boxes[input_shape] = shapes_canvases[input_shape].create_rectangle(0, 0, 169, 169, fill="", outline=border_colour)
                 check_pairs()
 
     def get_reset():
