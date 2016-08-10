@@ -49,7 +49,6 @@ def run(mode):
     shapes_frame = tkinter.Frame(window, bg=global_background)
     names_frame = tkinter.Frame(window, bg=global_background)
     popup_frame = tkinter.Frame(window, bg="white", height="5")
-    frameLoser = tkinter.Frame(window, bg="white", height="5")
     frameWincount = tkinter.Frame(window, bg=global_background)
 
     # Win Count setup
@@ -98,8 +97,6 @@ def run(mode):
                 reduceby = 5 * winner_count
 
             timer_time = timer_time - reduceby
-            print(timer_time)
-            print(reduceby)
 
     def change_fill(fill):
         if timer_gamestate != "running":
@@ -297,18 +294,18 @@ def run(mode):
                 clicked_currently_names = input_shape
                 names_boxes[input_shape] = names_canvases[input_shape].create_rectangle(0, 0, 119, 74, fill="", outline=border_colour)
                 names_boxes[input_shape] = names_canvases[input_shape].create_rectangle(55, 65, 65, 75, fill=fore_colour, outline=border_colour)
+                print("past2")
 
         elif type == "shape":
             if clicked_currently_names == 0:
+                print("0")
                 return()
-
-            if input_shape in pairs_current:
-                return
 
             if clicked_currently_shapes  == 0:
                 clicked_currently_shapes = input_shape
                 shapes_boxes[input_shape] = shapes_canvases[input_shape].create_rectangle(0, 0, 169, 169, fill="", outline=border_colour)
                 check_pairs()
+                print("past1")
 
     def get_reset():
         global pairs_count, pairs_current, winner_count_label_string, winner_count, popup_canvas, has_ran, popup_status, timer_count, timer_time
@@ -332,8 +329,6 @@ def run(mode):
     names_frame.place(relx=.5, rely=.2, anchor="center")
     frameWincount.place(relx=.05, rely=.05, anchor="center")
     popup_frame.place(relx=.5, rely=.5, anchor="center")
-    frameLoser.place(relx=.5, rely=.5, anchor="center")
     popup_frame.lower()
-    frameLoser.lower()
 
     window.mainloop()
