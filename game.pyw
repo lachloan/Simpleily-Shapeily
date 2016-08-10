@@ -49,13 +49,13 @@ def run(mode):
     shapes_frame = tkinter.Frame(window, bg=global_background)
     names_frame = tkinter.Frame(window, bg=global_background)
     popup_frame = tkinter.Frame(window, bg="white", height="5")
-    frameWincount = tkinter.Frame(window, bg=global_background)
+    winner_frame = tkinter.Frame(window, bg=global_background)
 
     # Win Count setup
     winner_count = 0
     winner_count_label_string = tkinter.StringVar()
     winner_count_label_string.set("Wins: 0")
-    winner_count_label = tkinter.Label(frameWincount, textvariable=winner_count_label_string, fg=text_colour, background=global_background, font=("MyriadPro-Regular", 15)).grid(column=2)
+    winner_count_label = tkinter.Label(winner_frame, textvariable=winner_count_label_string, fg=text_colour, background=global_background, font=("MyriadPro-Regular", 15)).grid(column=2)
 
     popup_canvas = tkinter.Canvas(popup_frame, width=500, height=300, bg="white", highlightthickness=1, highlightbackground=border_colour)
     popup_canvas_background = tkinter.PhotoImage(file='resources\\background.gif')
@@ -327,7 +327,7 @@ def run(mode):
 
     shapes_frame.place(relx=.5, rely=.65, anchor="center")
     names_frame.place(relx=.5, rely=.2, anchor="center")
-    frameWincount.place(relx=.05, rely=.05, anchor="center")
+    winner_frame.place(relx=.05, rely=.05, anchor="center")
     popup_frame.place(relx=.5, rely=.5, anchor="center")
     popup_frame.lower()
 
