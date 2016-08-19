@@ -6,7 +6,7 @@ def run(mode):
     global clicked_currently_names, clicked_currently_shapes, pairs_current, pairs_count, names_called, shapes_called, winner_count_label_string, winner_count, losercount, popup_canvas, has_ran
     global names_canvases, names_text, names_boxes
     global shapes_canvases, shapes_boxes, shapes_shapes
-    global popup_status,timer_count, timer_time, timer_gamestate
+    global popup_status,timer_count, timer_time, timer_gamestate, popup_canvas_window
 
     window = tkinter.Toplevel()
     window.title("Simpiley Shapeily - Game Panel")
@@ -84,19 +84,20 @@ def run(mode):
             return
 
         elif timer_gamestate == "running":
-            window.after(timer_time, lambda: change_fill(fill))
-            window.after(timer_time, lambda: init_timer())
-            timer_count+= 1
             if winner_count == 0:
                 reduceby = 10
 
-            elif winner_count < 13:
+            elif winner_count < 6:
                 reduceby = 20 * winner_count
 
-            elif winner_count > 13:
+            elif winner_count > 5:
                 reduceby = 5 * winner_count
 
             timer_time = timer_time - reduceby
+            
+            window.after(timer_time, lambda: change_fill(fill))
+            window.after(timer_time, lambda: init_timer())
+            timer_count+= 1
 
     def change_fill(fill):
         if timer_gamestate != "running":
@@ -106,10 +107,10 @@ def run(mode):
             shapes_canvases[i].itemconfig(shapes_shapes[i], fill=fill)
 
     def get_popup(outcome, count):
-        global popup_canvas, popup_canvas_text, popup_canvas_count, has_ran, popup_status, timer_gamestate
+        global popup_canvas, popup_canvas_text, popup_canvas_count, has_ran, popup_status, timer_gamestate, popup_canvas_window
 
         popup_button = ttk.Button(popup_frame, text="Restart", command=lambda: get_reset())
-        popup_button.place(rely=0.7, relx=.5,anchor="center")
+        popup_button.place(rely=0.9, relx=.5,anchor="center")
 
         popup_status = 1
 
@@ -120,11 +121,18 @@ def run(mode):
                 popup_canvas.delete(popup_canvas_text)
                 popup_canvas.delete(popup_canvas_count)
 
+
             popup_frame.lift()
             popup_canvas_text = popup_canvas.create_text(250, 100, text="Sorry, you lost!",
                                                          font=("MyriadPro-Regular", 20))
-            popup_canvas_count = popup_canvas.create_text(250, 180, text="Rounds Won: " + str(count),
+            popup_canvas_count = popup_canvas.create_text(250, 140, text="Rounds Won: " + str(count),
                                                          font=("MyriadPro-Regular", 15))
+            popup_canvas_instruction = popup_canvas.create_text(250,180, text="Enter your name", font=("MyriadPro-Regular", 12))
+
+            popup_window_entry = tkinter.Entry(window, text="Name")
+            popup_window_entry.configure(width = 10)
+
+            popup_canvas_window = popup_canvas.create_window(250, 200, window=popup_window_entry)
 
             winner_count_label_string.set("Wins: 0")
 
@@ -294,21 +302,18 @@ def run(mode):
                 clicked_currently_names = input_shape
                 names_boxes[input_shape] = names_canvases[input_shape].create_rectangle(0, 0, 119, 74, fill="", outline=border_colour)
                 names_boxes[input_shape] = names_canvases[input_shape].create_rectangle(55, 65, 65, 75, fill=fore_colour, outline=border_colour)
-                print("past2")
 
         elif type == "shape":
             if clicked_currently_names == 0:
-                print("0")
                 return()
 
             if clicked_currently_shapes  == 0:
                 clicked_currently_shapes = input_shape
                 shapes_boxes[input_shape] = shapes_canvases[input_shape].create_rectangle(0, 0, 169, 169, fill="", outline=border_colour)
                 check_pairs()
-                print("past1")
 
     def get_reset():
-        global pairs_count, pairs_current, winner_count_label_string, winner_count, popup_canvas, has_ran, popup_status, timer_count, timer_time
+        global pairs_count, pairs_current, winner_count_label_string, winner_count, popup_canvas, has_ran, popup_status, timer_count, timer_time, popup_canvas_window
 
         pairs_count = 0
         pairs_current.clear()
@@ -322,6 +327,9 @@ def run(mode):
         timer_time = 1000
 
         popup_status = 0
+        popup_canvas.delete(popup_canvas_window)
+
+        
 
     get_shapes(3)
 

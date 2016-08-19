@@ -1,5 +1,5 @@
 from tkinter import ttk
-import tkinter
+import tkinter, pickle
 
 import database
 import teacher
@@ -17,12 +17,14 @@ window.resizable(0,0)
 ent = tkinter.Entry(window)
 
 
+
 def main_menu():
     global window, ent
 
     frameOne = tkinter.Frame(window)
     frameTwo = tkinter.Frame(window)
     frameButtons = tkinter.Frame(window)
+    frameLeaderboard = tkinter.Frame(window)
 
     canvasMain = tkinter.Canvas(frameOne, width=1280, height=720)
     canvasMain.pack()
@@ -38,7 +40,7 @@ def main_menu():
     canvasMain.move(canvasText, xOffset, 75)
 
     canvasTextsub = canvasMain.create_text(10, 180, anchor="nw")
-    canvasMain.itemconfig(canvasTextsub, text="Click on the picture of you to start!", width=1280, fill="#4f4f4f")
+    canvasMain.itemconfig(canvasTextsub, text='Press "Go!" to start', width=1280, fill="#4f4f4f")
     canvasMain.itemconfig(canvasTextsub, font=("MyriadPro-Regular", 19))
     xOffset = findXCenter(canvasMain, canvasTextsub)
     canvasMain.move(canvasTextsub, xOffset, 75)
@@ -49,24 +51,22 @@ def main_menu():
     xOffset = findXCenter(canvasMain, canvasTextatt)
     canvasMain.move(canvasTextatt, xOffset, 75)
 
-    button = ttk.Button(frameButtons, text="Run otherway", command=lambda: game.run("other")).grid(row=1)
+    button = ttk.Button(frameButtons, text="Go!", command=lambda: game.run("timed")).grid(row=1)
 
-    children_dict = database.dbLoad()
-    children_pictures = {}
-    children_buttons = {}
-    children_count = 0
+    file = "resources/leaderboard.db"
+    leaderboard_dict = pickle.load(open(file, "rb"))
+    leaderboard_list = list(sorted(leaderboard_dict, key=leaderboard_dict.__getitem__, reverse=True))
+    print(leaderboard_list)
+    leaderboard_entries = {}
+    for i in leaderboard_list:
+        leaderboard_entries[i] = (tkinter.Label(frameLeaderboard, text=i + " " + str(leaderboard_dict.get(i)), font=("MyriadPro-Regular", 13)))
+        leaderboard_entries[i].grid()
 
-    for i in children_dict:
-        print(i)
-        children_pictures[i] = tkinter.PhotoImage(
-            file='resources\\child' + i + '.gif')
-        children_buttons[i] = ttk.Button(frameTwo, image=children_pictures[i], command=lambda: game.run("timed")).grid(
-            column=children_count, row=0)
-        children_count = children_count + 1
 
     frameOne.pack()
     frameTwo.place(in_=frameOne, anchor="c", relx=.5, rely=.5)  # http://stackoverflow.com/questions/4241036/how-do-i-center-a-frame-within-a-frame-in-tkinter
-    frameButtons.place(in_=frameOne, anchor="c", relx=.5, rely=.91)
+    frameButtons.place(in_=frameOne, anchor="c", relx=.5, rely=.45)
+    frameLeaderboard.place(in_=frameOne, anchor="c", relx=.5, rely=.7)
     window.mainloop()
 
 main_menu()
