@@ -1,8 +1,5 @@
 from tkinter import ttk
 import tkinter, pickle
-
-import database
-import teacher
 import game
 
 def findXCenter(canvas, item):

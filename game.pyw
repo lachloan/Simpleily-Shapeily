@@ -1,5 +1,6 @@
-import tkinter, random
+import tkinter, random, pickle
 from tkinter import ttk
+
 
 
 def run(mode):
@@ -62,6 +63,17 @@ def run(mode):
     popup_canvas.create_image(0, 0, image=popup_canvas_background, anchor="nw")
     popup_canvas.pack()
 
+
+    def update_leaderboard(count):
+        file = "resources/leaderboard.db"
+        leaderboard_dict = pickle.load(open(file, "rb"))
+        leaderboard_add = popup_window_entry.get()
+        leaderboard_dict[leaderboard_add] = count
+        print(leaderboard_dict)
+        pickle.dump(leaderboard_dict, open(file, "wb"))
+        get_reset()
+
+
     def init_timer():
         global shapes_canvases, shapes_shapes, timer_count, timer_time, winner_count, timer_gamestate
 
@@ -107,7 +119,7 @@ def run(mode):
             shapes_canvases[i].itemconfig(shapes_shapes[i], fill=fill)
 
     def get_popup(outcome, count):
-        global popup_canvas, popup_canvas_text, popup_canvas_count, has_ran, popup_status, timer_gamestate, popup_canvas_window
+        global popup_canvas, popup_canvas_text, popup_canvas_count, has_ran, popup_status, timer_gamestate, popup_canvas_window, popup_window_entry
 
         popup_button = ttk.Button(popup_frame, text="Restart", command=lambda: get_reset())
         popup_button.place(rely=0.9, relx=.5,anchor="center")
@@ -136,7 +148,7 @@ def run(mode):
 
             winner_count_label_string.set("Wins: 0")
 
-            popup_button.config(text="Reset")
+            popup_button.config(text="Reset", command=lambda: update_leaderboard(count))
         elif outcome == "win":
             if has_ran == True:
                 popup_canvas.delete(popup_canvas_text)
