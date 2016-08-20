@@ -68,6 +68,11 @@ def run(mode):
         file = "resources/leaderboard.db"
         leaderboard_dict = pickle.load(open(file, "rb"))
         leaderboard_add = popup_window_entry.get()
+        if "" in leaderboard_add:
+            print("resetting")
+            get_reset()
+            return()
+
         leaderboard_dict[leaderboard_add] = count
         print(leaderboard_dict)
         pickle.dump(leaderboard_dict, open(file, "wb"))
@@ -98,14 +103,18 @@ def run(mode):
         elif timer_gamestate == "running":
             if winner_count == 0:
                 reduceby = 10
+                print("1")
 
             elif winner_count < 6:
                 reduceby = 20 * winner_count
+                print("2")
 
             elif winner_count > 5:
                 reduceby = 5 * winner_count
+                print("3")
 
             timer_time = timer_time - reduceby
+            print(timer_time)
             
             window.after(timer_time, lambda: change_fill(fill))
             window.after(timer_time, lambda: init_timer())
@@ -119,7 +128,7 @@ def run(mode):
             shapes_canvases[i].itemconfig(shapes_shapes[i], fill=fill)
 
     def get_popup(outcome, count):
-        global popup_canvas, popup_canvas_text, popup_canvas_count, has_ran, popup_status, timer_gamestate, popup_canvas_window, popup_window_entry
+        global popup_canvas, popup_canvas_text, popup_canvas_count, has_ran, popup_status, timer_gamestate, popup_canvas_window, popup_window_entry, popup_canvas_instruction
 
         popup_button = ttk.Button(popup_frame, text="Restart", command=lambda: get_reset())
         popup_button.place(rely=0.9, relx=.5,anchor="center")
@@ -132,6 +141,17 @@ def run(mode):
             if has_ran == True:
                 popup_canvas.delete(popup_canvas_text)
                 popup_canvas.delete(popup_canvas_count)
+                try:
+                    popup_canvas.delete(popup_window_entry)
+
+                except:
+                    print("l")
+
+                try:
+                    popup_canvas.delete(popup_canvas_instruction)
+
+                except:
+                    print("l")
 
 
             popup_frame.lift()
@@ -153,6 +173,17 @@ def run(mode):
             if has_ran == True:
                 popup_canvas.delete(popup_canvas_text)
                 popup_canvas.delete(popup_canvas_count)
+                try:
+                    popup_canvas.delete(popup_window_entry)
+
+                except:
+                    print("l")
+
+                try:
+                    popup_canvas.delete(popup_canvas_instruction)
+
+                except:
+                    print("l")
 
             popup_frame.lift()
             popup_canvas_text = popup_canvas.create_text(250, 100, text="Congratulations, you won!",
@@ -307,6 +338,7 @@ def run(mode):
             return
 
         if type == "name":
+
             if input_shape in pairs_current:
                 return
 
