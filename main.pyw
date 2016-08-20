@@ -55,9 +55,13 @@ def main_menu():
     leaderboard_list = list(sorted(leaderboard_dict, key=leaderboard_dict.__getitem__, reverse=True))
     print(leaderboard_list)
     leaderboard_entries = {}
+    leaderboard_count = 0
     for i in leaderboard_list:
         leaderboard_entries[i] = (tkinter.Label(frameLeaderboard, text=i + " " + str(leaderboard_dict.get(i)), font=("MyriadPro-Regular", 13)))
         leaderboard_entries[i].grid()
+        leaderboard_count = leaderboard_count + 1
+        if leaderboard_count == 5:
+            break
 
 
     frameOne.pack()
