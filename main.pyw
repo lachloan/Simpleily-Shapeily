@@ -41,6 +41,17 @@ def help_menu():
     canvasHelp.itemconfig(help_text, font=("MyriadPro-Regular", 12))
     canvasHelp.move(help_text, 35, 105)
 
+    help_title2 = canvasHelp.create_text(10, 0, anchor="nw")
+    canvasHelp.itemconfig(help_title2, text='The Leaderboard', width=500, fill="#4f4f4f")
+    canvasHelp.itemconfig(help_title2, font=("MyriadPro-Regular", 17))
+    canvasHelp.move(help_title2, 250, 370)
+
+    help_text2 = canvasHelp.create_text(10, 0, anchor="nw")
+    canvasHelp.itemconfig(help_text2, text="The Leaderboard is where you can see who is the best at the game! If you score in the top 5, your name will appear in the leaderboard!",
+                          width=200, fill="#4f4f4f")
+    canvasHelp.itemconfig(help_text2, font=("MyriadPro-Regular", 11))
+    canvasHelp.move(help_text2, 250, 400)
+
     shapes_shapes = {}
     shapes_shapes["square"] = (canvasHelp.create_rectangle(45, 200, 85, 240, fill="#4f4f4f",
                                                                     outline="#4f4f4f"))  # Square
@@ -116,13 +127,13 @@ def main_menu():
     xOffset = findXCenter(canvasMain, canvasText)
     canvasMain.move(canvasText, xOffset, 75)
 
-    canvasTextsub = canvasMain.create_text(10, 180, anchor="nw")
+    canvasTextsub = canvasMain.create_text(10, 140, anchor="nw")
     canvasMain.itemconfig(canvasTextsub, text='Press "Go!" to start', width=1280, fill="#4f4f4f")
     canvasMain.itemconfig(canvasTextsub, font=("MyriadPro-Regular", 19))
     xOffset = findXCenter(canvasMain, canvasTextsub)
     canvasMain.move(canvasTextsub, xOffset, 75)
 
-    canvasTexthelp = canvasMain.create_text(10, 310, anchor="nw")
+    canvasTexthelp = canvasMain.create_text(10, 500, anchor="nw")
     canvasMain.itemconfig(canvasTexthelp, text='Need any help? Press "Help?"', width=1280, fill="#4f4f4f")
     canvasMain.itemconfig(canvasTexthelp, font=("MyriadPro-Regular", 14))
     xOffset = findXCenter(canvasMain, canvasTexthelp)
@@ -133,6 +144,12 @@ def main_menu():
     canvasMain.itemconfig(canvasTextatt, font=("MyriadPro-Regular", 13))
     xOffset = findXCenter(canvasMain, canvasTextatt)
     canvasMain.move(canvasTextatt, xOffset, 75)
+
+    canvasTextleader = canvasMain.create_text(4, 270, anchor="nw")
+    canvasMain.itemconfig(canvasTextleader, text="The Leaderboard", width=1280, fill="#4f4f4f")
+    canvasMain.itemconfig(canvasTextleader, font=("MyriadPro-Regular", 16))
+    xOffset = findXCenter(canvasMain, canvasTextleader)
+    canvasMain.move(canvasTextleader, xOffset, 75)
 
     buttonGo = ttk.Button(frameButtonsGo, text="Go!", command=lambda: game.run("timed")).grid(row=1)
     buttonHelp = ttk.Button(frameButtonsHelp, text="Help?", command=lambda: help_menu()).grid(row=1)
@@ -153,9 +170,9 @@ def main_menu():
 
     frameOne.pack()
     frameTwo.place(in_=frameOne, anchor="c", relx=.5, rely=.5)  # http://stackoverflow.com/questions/4241036/how-do-i-center-a-frame-within-a-frame-in-tkinter
-    frameButtonsGo.place(in_=frameOne, anchor="c", relx=.5, rely=.45)
-    frameLeaderboard.place(in_=frameOne, anchor="c", relx=.5, rely=.8)
-    frameButtonsHelp.place(in_=frameOne, anchor="c", relx=.5, rely=.61)
+    frameButtonsGo.place(in_=frameOne, anchor="c", relx=.5, rely=.37)
+    frameLeaderboard.place(in_=frameOne, anchor="c", relx=.5, rely=.63)
+    frameButtonsHelp.place(in_=frameOne, anchor="c", relx=.5, rely=.86)
     window.mainloop()
 
 main_menu()
