@@ -68,7 +68,7 @@ def run(mode):
         file = "resources/leaderboard.db"
         leaderboard_dict = pickle.load(open(file, "rb"))
         leaderboard_add = popup_window_entry.get()
-        if "" in leaderboard_add:
+        if leaderboard_add == "":
             print("resetting")
             get_reset()
             return()
@@ -77,7 +77,6 @@ def run(mode):
         print(leaderboard_dict)
         pickle.dump(leaderboard_dict, open(file, "wb"))
         get_reset()
-
 
     def init_timer():
         global shapes_canvases, shapes_shapes, timer_count, timer_time, winner_count, timer_gamestate
@@ -371,7 +370,10 @@ def run(mode):
         timer_time = 1000
 
         popup_status = 0
-        popup_canvas.delete(popup_canvas_window)
+        try:
+            popup_canvas.delete(popup_canvas_window)
+        except:
+            print(" ")
 
         
 

@@ -13,6 +13,85 @@ window.geometry("1280x720")
 window.resizable(0,0)
 ent = tkinter.Entry(window)
 
+def help_menu():
+    global window, ent
+
+    help_window = tkinter.Toplevel()
+    help_window.title("Simpiley Shapeily")
+    help_window.geometry("500x600")
+    help_window.resizable(0,0)
+
+    canvasHelp = tkinter.Canvas(help_window, width=500, height=600)
+    canvasHelp.pack()
+
+
+    background_image = tkinter.PhotoImage(
+        file='resources\\background.gif')
+    canvasHelp.create_image(0, 0, image=background_image, anchor="nw")
+
+    help_title = canvasHelp.create_text(10, 0, anchor="nw")
+    canvasHelp.itemconfig(help_title, text='Welcome to Simpiley Shapeily!', width=500, fill="#4f4f4f")
+    canvasHelp.itemconfig(help_title, font=("MyriadPro-Regular", 24))
+    canvasHelp.move(help_title, 35, 55)
+
+
+    help_text = canvasHelp.create_text(10, 0, anchor="nw")
+    canvasHelp.itemconfig(help_text,
+                          text="Simpiley Shapeily is a shape matching game! It's easy! \nClick the name you want to connect, and then click the \nshape you want to connect it with! You cannot unselect\n your selections! The shapes are as follows:", width=500, fill="#4f4f4f")
+    canvasHelp.itemconfig(help_text, font=("MyriadPro-Regular", 12))
+    canvasHelp.move(help_text, 35, 105)
+
+    shapes_shapes = {}
+    shapes_shapes["square"] = (canvasHelp.create_rectangle(45, 200, 85, 240, fill="#4f4f4f",
+                                                                    outline="#4f4f4f"))  # Square
+
+    shapes_shapes["triangle"] = (canvasHelp.create_polygon(45, 300, 65, 260, 85, 300, fill="#4f4f4f",
+                                                           outline="#4f4f4f"))  # Square
+
+    shapes_shapes["circle"] = (canvasHelp.create_oval(45, 320, 85, 360, fill="#4f4f4f",
+                                                           outline="#4f4f4f"))  # Square
+
+    shapes_shapes["diamond"] = (canvasHelp.create_polygon(45, 400, 65, 380, 85, 400, 65, 420, fill="#4f4f4f",
+                                                           outline="#4f4f4f"))  # Square
+
+    shapes_shapes["trapezium"] = (canvasHelp.create_polygon(45, 460, 55, 440, 75, 440, 85, 460, fill="#4f4f4f",
+                                                           outline="#4f4f4f"))  # Square
+
+    shapes_shapes["pentagon"] = (canvasHelp.create_polygon(65, 480, 46, 494, 53, 516, 77, 516, 84, 494, fill="#4f4f4f",
+                                                           outline="#4f4f4f"))  # Square
+
+    shapes_shapes["hexagon"] = (canvasHelp.create_polygon(75, 533, 55, 533, 45, 550, 55, 567, 75, 567, 85, 550, fill="#4f4f4f",
+                                                           outline="#4f4f4f"))  # Square
+
+    shapes_name = {}
+    shapes_list = ['square', 'triangle', 'circle', 'diamond', 'trapezium', 'pentagon', 'hexagon']
+    count = 1
+
+    for i in shapes_list:
+        i = i.title()
+        print(i)
+        shapes_name[i] = canvasHelp.create_text(10, 0, anchor="nw")
+        canvasHelp.itemconfig(shapes_name[i],
+                              text=i,
+                              width=500, fill="#4f4f4f")
+        canvasHelp.itemconfig(shapes_name[i], font=("MyriadPro-Regular", 12))
+        if i == "Pentagon":
+            canvasHelp.move(shapes_name[i], 95, 150 + count * 57)
+
+        elif i == "Hexagon":
+            canvasHelp.move(shapes_name[i], 95, 150 + count * 56)
+        else:
+            canvasHelp.move(shapes_name[i], 95, 150+count*58)
+        count = count + 1
+
+
+
+    
+
+
+
+
+    help_window.mainloop()
 
 
 def main_menu():
@@ -20,7 +99,8 @@ def main_menu():
 
     frameOne = tkinter.Frame(window)
     frameTwo = tkinter.Frame(window)
-    frameButtons = tkinter.Frame(window)
+    frameButtonsGo = tkinter.Frame(window)
+    frameButtonsHelp = tkinter.Frame(window)
     frameLeaderboard = tkinter.Frame(window)
 
     canvasMain = tkinter.Canvas(frameOne, width=1280, height=720)
@@ -42,13 +122,20 @@ def main_menu():
     xOffset = findXCenter(canvasMain, canvasTextsub)
     canvasMain.move(canvasTextsub, xOffset, 75)
 
+    canvasTexthelp = canvasMain.create_text(10, 310, anchor="nw")
+    canvasMain.itemconfig(canvasTexthelp, text='Need any help? Press "Help?"', width=1280, fill="#4f4f4f")
+    canvasMain.itemconfig(canvasTexthelp, font=("MyriadPro-Regular", 14))
+    xOffset = findXCenter(canvasMain, canvasTexthelp)
+    canvasMain.move(canvasTexthelp, xOffset, 75)
+
     canvasTextatt = canvasMain.create_text(10, 600, anchor="nw")
-    canvasMain.itemconfig(canvasTextatt, text="Built by Lockie, v0.01", width=1280, fill="#4f4f4f")
+    canvasMain.itemconfig(canvasTextatt, text="Built by Lachlan, v1.2", width=1280, fill="#4f4f4f")
     canvasMain.itemconfig(canvasTextatt, font=("MyriadPro-Regular", 13))
     xOffset = findXCenter(canvasMain, canvasTextatt)
     canvasMain.move(canvasTextatt, xOffset, 75)
 
-    button = ttk.Button(frameButtons, text="Go!", command=lambda: game.run("timed")).grid(row=1)
+    buttonGo = ttk.Button(frameButtonsGo, text="Go!", command=lambda: game.run("timed")).grid(row=1)
+    buttonHelp = ttk.Button(frameButtonsHelp, text="Help?", command=lambda: help_menu()).grid(row=1)
 
     file = "resources/leaderboard.db"
     leaderboard_dict = pickle.load(open(file, "rb"))
@@ -66,8 +153,9 @@ def main_menu():
 
     frameOne.pack()
     frameTwo.place(in_=frameOne, anchor="c", relx=.5, rely=.5)  # http://stackoverflow.com/questions/4241036/how-do-i-center-a-frame-within-a-frame-in-tkinter
-    frameButtons.place(in_=frameOne, anchor="c", relx=.5, rely=.45)
-    frameLeaderboard.place(in_=frameOne, anchor="c", relx=.5, rely=.7)
+    frameButtonsGo.place(in_=frameOne, anchor="c", relx=.5, rely=.45)
+    frameLeaderboard.place(in_=frameOne, anchor="c", relx=.5, rely=.8)
+    frameButtonsHelp.place(in_=frameOne, anchor="c", relx=.5, rely=.61)
     window.mainloop()
 
 main_menu()
