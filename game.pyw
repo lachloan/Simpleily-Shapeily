@@ -67,6 +67,8 @@ def run(mode):
     def update_leaderboard(count):
         file = "resources/leaderboard.db"
         leaderboard_dict = pickle.load(open(file, "rb"))
+        if "Empty" in leaderboard_dict:
+            leaderboard_dict = {}
         leaderboard_add = popup_window_entry.get()
         if leaderboard_add == "":
             print("resetting")

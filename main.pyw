@@ -155,7 +155,13 @@ def main_menu():
     buttonHelp = ttk.Button(frameButtonsHelp, text="Help?", command=lambda: help_menu()).grid(row=1)
 
     file = "resources/leaderboard.db"
-    leaderboard_dict = pickle.load(open(file, "rb"))
+    try:
+        leaderboard_dict = pickle.load(open(file, "rb"))
+    except:
+        open(file, "a").close()
+        leaderboard_dict = {"Empty" : 0}
+        pickle.dump(leaderboard_dict, open(file, "wb"))
+
     leaderboard_list = list(sorted(leaderboard_dict, key=leaderboard_dict.__getitem__, reverse=True))
     print(leaderboard_list)
     leaderboard_entries = {}
