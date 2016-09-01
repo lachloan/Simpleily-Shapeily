@@ -71,12 +71,10 @@ def run(mode):
             leaderboard_dict = {}
         leaderboard_add = popup_window_entry.get()
         if leaderboard_add == "":
-            print("resetting")
             get_reset()
             return()
 
         leaderboard_dict[leaderboard_add] = count
-        print(leaderboard_dict)
         pickle.dump(leaderboard_dict, open(file, "wb"))
         get_reset()
 
@@ -104,18 +102,14 @@ def run(mode):
         elif timer_gamestate == "running":
             if winner_count == 0:
                 reduceby = 10
-                print("1")
 
             elif winner_count < 6:
                 reduceby = 20 * winner_count
-                print("2")
 
             elif winner_count > 5:
                 reduceby = 5 * winner_count
-                print("3")
 
             timer_time = timer_time - reduceby
-            print(timer_time)
             
             window.after(timer_time, lambda: change_fill(fill))
             window.after(timer_time, lambda: init_timer())

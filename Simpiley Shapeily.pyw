@@ -1,6 +1,6 @@
 from tkinter import ttk
 import tkinter, pickle
-import game
+import internal
 
 def findXCenter(canvas, item):
     coords = canvas.bbox(item)
@@ -151,7 +151,7 @@ def main_menu():
     xOffset = findXCenter(canvasMain, canvasTextleader)
     canvasMain.move(canvasTextleader, xOffset, 75)
 
-    buttonGo = ttk.Button(frameButtonsGo, text="Go!", command=lambda: game.run("timed")).grid(row=1)
+    buttonGo = ttk.Button(frameButtonsGo, text="Go!", command=lambda: internal.run("timed")).grid(row=1)
     buttonHelp = ttk.Button(frameButtonsHelp, text="Help?", command=lambda: help_menu()).grid(row=1)
 
     file = "resources/leaderboard.db"
@@ -163,7 +163,6 @@ def main_menu():
         pickle.dump(leaderboard_dict, open(file, "wb"))
 
     leaderboard_list = list(sorted(leaderboard_dict, key=leaderboard_dict.__getitem__, reverse=True))
-    print(leaderboard_list)
     leaderboard_entries = {}
     leaderboard_count = 0
     for i in leaderboard_list:
